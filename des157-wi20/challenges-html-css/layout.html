@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Challenges</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Slab:300&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <h1>HTML and CSS Refresher Challenges</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">HTML Basics</a></li>
+                <li><a href="cssbasics.html">CSS Basics</a></li>
+                <li><a href="layout.html">Page Layout</a></li>
+                <li><a href="responsive.html">Responsive Design</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <article>
+
+            <h2>Structure, Phrasing, and Display</h2>
+
+            <p>Structural (block) and phrasing (inline) elements differ in several ways. The purpose of structural elements are based more on giving the page structure and giving the element structural meaning, while phrasing elements are more focused on styling. Structural elements take up the entire width and are on their own, new line, while phrasing elements display on the same line. </p>
+
+            <p>The CSS display property determines the display behavior of an element and some common values include the following:</p>
+
+            <ul>
+                <li>inline: display as inline element</li>
+                <li>block: display as block element</li>
+                <li>contents: makes the container disappear</li>
+                <li>flex: display as block-level flex container</li>
+                <li>grid: display as block-level grid container</li>
+                <li>inline-block: display as inline-level clock container</li>
+                <li>none: removes the element</li>
+                <li>initial: sets to default value</li>
+                <li>inherit: inherits the property from the parent</li>
+            </ul>
+
+            <p>So, by setting the display property of an element, you can change the default display of the elements and thus have more flexibility abd creativity in the layout of the page. For example, by declaring a { display:block; }, link elements can be formatted with height and width, and be able to be clicked on in that entire area rather than just the text.</p>
+
+        </article>
+
+        <article>
+
+            <h2>Box Model</h2>
+
+            <p>The CSS box model is a model that governs the layout of HTML  elements and how they are displayed. Essentially, each element is contained in a box. From inside to the outside, the box consists of the content (which contains the content of the element) , padding, border, and margin. The thickness of these parts can be set to specific values that affect the display. With contiguous elements, margins may collapse, with the space between the elements only being as wide as whichever element had a larger margin. The box-sizing property is set to context-box by default, meaning that the width and height of elements (specified with width and height attributes) refers to the width and height of the content box. However, it can be set to padding-box, border-box, or margin-box.</p>
+
+            <img src="images/box-model.gif" alt="box model diagram" width="600" height="400">
+
+        </article>
+
+        <article class="bground">
+
+            <h2>Background Images</h2>
+
+            <p>Images in &lt;img&gt; tags are used when the image is an important piece of content. It allows it to have an alt attribute. Background images are not part of the content and have properties that make it suited to filling an element, so it can go in the background. Background images are done in CSS, while &lt;img&gt; tags are done in HTML, making them load at different times.</p>
+
+        </article>
+
+    </main>
+
+    <footer>
+
+        <p>Page by Alana Rufer</p>
+        <p>HTML checked by Ru and Neha</p>
+        <p><a href="http://validator.w3.org/check?uri=referer">Valid HTML</a></p>
+
+    </footer>
+
+</body>
+</html>

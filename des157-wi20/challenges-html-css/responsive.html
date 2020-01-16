@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Challenges</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Slab:300&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <h1>HTML and CSS Refresher Challenges</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">HTML Basics</a></li>
+                <li><a href="cssbasics.html">CSS Basics</a></li>
+                <li><a href="layout.html">Page Layout</a></li>
+                <li><a href="responsive.html">Responsive Design</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <article>
+
+            <h2>About Media Queries</h2>
+
+            <p>Media queries are a way of detecting and responding to screen size and media types through applying the corresponding CSS rules for that screen size or media type. This makes media queries a vital component of responsive design. </p>
+
+            <p>The general syntax for a media query is <br> <code>@media not|only <em>mediatype</em> and (<em>mediafeature</em> and|or|not <em>mediafeature</em>) <br>{ /* CSS styles here */ }</code></p>
+
+            <p>For example: <br> <code>@media only screen and (min-width: 600px) <br>{ /* CSS styles here */ }</code></p>
+
+            <p>Media queries can be either min-width or max-width, which function in opposite ways. Min-width checks that the screen has a minimum of the given width, and applies its rules to all screens that have at least that width. Max-width checks if the screen is at most the given width, and applies its rules when the screen is less than or equal to the given width.</p> 
+
+            <p>As a general rule, we do mobile-first design, meaning we develop for small screens first and work our way up to larger layouts. This is because progressive enhancement of a mobile design is much simpler, easier, and cleaner than progressive degradation of a layout for large screen. In other words, it is easier to build up to more complex designs from simpler designs than it is to remove layout and features from complex designs. </p>
+
+        </article>
+
+        <article>
+
+            <h2>Relative Units</h2>
+
+            <p>In web design, we use relative units because they are convenient for responsive design. They also eliminate the need for the developer to do more calculations themself and allows for automatic adjustment based on changes in other parts of CSS, instead of needing to go through the code and change the sizes of all affected elements. For example, setting an element's width to a percentage allows the element to resize based on the size of the screen or parent elements. The "em" unit is another relative unit and refers to the font size of the element, which is helpful is keeping sizes proportional to the font without needing to calculate the corresponding size and applying an additional size, since it automatically adjusts to changes. "vw" and "vh" are relative to 1% of the width and height of the screen, respectively. </p>
+
+        </article>
+
+        <article>
+
+            <h2>Meta Viewport Tag</h2>
+
+            <p>The meta viewport element signals to the browser how the page size should be determined, which is important for responsive design. The attribute <em>content</em> has the value <em>"width=device-width"</em>, which tells the browser to make the page the width of the screen or window, and <em>"initial-scale=1"</em>, which tells the browser that the zoom should equal 1. If this element is not included, the web page does not display as intended. However, when I commented out the meta viewport tag, my web page did not display differently and I'm not sure why.</p>
+
+        </article>
+
+    </main>
+
+    <footer>
+
+        <p>Page by Alana Rufer</p>
+        <p>HTML checked by Ru and Neha</p>
+        <p><a href="http://validator.w3.org/check?uri=referer">Valid HTML</a></p>
+
+    </footer>
+
+</body>
+</html>

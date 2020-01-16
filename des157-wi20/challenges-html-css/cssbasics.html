@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Challenges</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto+Slab:300&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <h1>HTML and CSS Refresher Challenges</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">HTML Basics</a></li>
+                <li><a href="cssbasics.html">CSS Basics</a></li>
+                <li><a href="layout.html">Page Layout</a></li>
+                <li><a href="responsive.html">Responsive Design</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <article>
+
+            <h2>Inheritance in CSS</h2>
+
+            <p>In CSS, inheritance is how styles of parent elements are passed on to their child elements. This is useful because inheriting properties allows a property to be defined once on a parent element, and not needed to be defined in every child element individually. Inheritance does not apply to all properties, however. Properties such as color, font-family, font-size, and line-height are inherited, but properities such as text-align, margin, padding, and border are not inherited. </p>
+
+        </article>
+
+        <article>
+
+            <h2>Specificity in CSS</h2>
+
+            <p>In CSS, specificity helps determine which CSS rules is applied to an element, especially since multiple contradictory rules may target an element. Essentially, rules with more specific rules override less specific ones. The specificity hierarchy is as follows: inline styles; IDs; classes, attributes, and pseudo-classes; and finally elements and pseudo-elements. Specificity is calculated by adding 1000 for an inline style, 100 for each ID, 10 for each attribute, class, or pseudo-class, and 1 for each element or pseudo-element name. If selectors have equal specificity, the last applied rule applies. A compound selector is a selector that combines selectors, while a multiple selector is a way of groups selector such that they all have the same declaration, allowing you to apply the same style to different elements with minimal repetition.</p>
+
+        </article>
+
+        <article>
+
+            <h2>ID and Class Attributes</h2>
+
+            <p>ID and class attributes are two different attributes that are helpful in grouping elements for styling. When using an ID attribute as a selector in CSS, it is prefixed with '#'. Class attributes are prefixed with ".". ID attributes have higher specificity than class attributes. In addition, IDs can only apply to one element, while the same class can apply to multiple elements.</p>
+
+        </article>
+
+    </main>
+
+    <footer>
+
+        <p>Page by Alana Rufer</p>
+        <p>HTML checked by Ru and Neha</p>
+        <p><a href="http://validator.w3.org/check?uri=referer">Valid HTML</a></p>
+
+    </footer>
+
+</body>
+</html>

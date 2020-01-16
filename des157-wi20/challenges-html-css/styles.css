@@ -1,0 +1,108 @@
+
+body {
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.6em;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+h1,
+h2 {
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.3em;
+    font-weight: 400;
+    color: #003470;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    padding: 20px 0px;
+    border-bottom: solid 3px #1ACCC0;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 20px 0px;
+}
+nav ul li a {
+    display: block;
+    background-color: #FF6B6B;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 22px;
+    padding: 20px 0px;
+}
+nav ul li a:hover {
+    background-color: #1ACCC0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    background-color: #F2E5FF;
+    padding: 10px 20px;
+}
+
+header {
+    background: rgb(26,204,192);
+    background: linear-gradient(180deg, rgba(26,204,192,1) 0%, rgba(239,251,251,1) 25%, rgba(255,255,255,1) 61%);
+}
+p, h2 {
+    padding: 10px;
+}
+.bground {
+    background: url("images/overpass.jpg") no-repeat;
+    background-size: cover;
+}
+.bground p, .bground h2 {
+    color: white;
+    background-color: rgba(1, 1, 1, 0.3);
+}
+
+footer {
+    text-align: center;
+    background: rgb(26,204,192);
+    background: linear-gradient(0deg, rgba(26,204,192,1) 0%, rgba(239,251,251,1) 52%, rgba(255,255,255,1) 80%);
+}
+
+@media only screen and (min-width: 600px) {
+    
+    main {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    article {
+        width: 30%;
+    }
+
+    nav ul {
+        display: flex;
+        overflow: hidden;
+    }
+    nav ul li {
+        flex: 1;
+        border-right: solid 3px #FFFFFF;
+    }
+    nav ul li:last-of-type {
+        border-right: none;
+    }
+
+    nav ul li a {
+        height: 100%;
+    }
+
+}
