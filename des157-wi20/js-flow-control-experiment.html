@@ -11,8 +11,59 @@
 
     <script>
 
-        var input = prompt();
+
+        // get input from user
+        var input = prompt("Enter a string: ", "");
+
+
+        // CAPITALIZES FIRST LETTER OF EACH WORD 
+
+        // break input into array of words
+        wordArray = input.split(" ");
+        var output = ""; // string to print
+        
+        // separate first letter of each word and the rest of the word
+        // concatenate output, capitalized first letter, rest of word
+        for (var i = 0; i < wordArray.length; i++) {
+            var firstLetter = wordArray[i].slice(0,1);
+            var restOfWord = wordArray[i].slice(1);
+            output = `${output}${firstLetter.toUpperCase()}${restOfWord} `;
+        }
+        
+        // print to console
+        console.log(`With the first letter of each word capitalized: ${output}`);
+
+
+        // CAPITALIZES EVERY OTHER LETTER 
+
+        var output = ""; // output string
+        var count = 0; // counts letters (not index)
+
+        for (var i = 0; i < input.length; i++) {
+
+            var char = input.substr(i, 1);
+
+            // case for space
+            if (char == ' ') {
+                output = `${output}${char}`;
+            }
+            // case for even letter
+            else if ((count % 2) == 0) {
+                output = `${output}${char.toUpperCase()}`;
+                count++;
+            }
+            // case for odd letter, etc
+            else {
+                output = `${output}${char.toLowerCase()}`;
+                count++;
+            }
+        }
+
+        // print it 
+        console.log(`With every other letter capitalized: ${output}`);
     
+
+
     </script>
     
 </body>
