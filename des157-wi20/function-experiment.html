@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Experiment</title>
+</head>
+<body>
+
+    <h1>Function Experiment</h1>
+
+
+    <script>
+
+        // checks if input is an integer 
+        // returns true or false and prints the corresponding message
+        function verifyInput(input) {
+            // is a number
+            if (parseInt(input)) {
+                console.log(`thank you for entering ${input}`);
+                return true;
+            }
+            // is not a number
+            else {
+                console.log(`"${input}" is not an integer`);
+                return false;
+            }
+        }
+
+        // fill an array with size integers provided by the user
+        function userFillArray(arr, size) {
+            for (var i = 0; i < size; i++) {
+                var userInput = "";
+                do {
+                    userInput = prompt("Enter a number", "");
+                } while (!verifyInput(userInput)); // checks for valid input
+                arr.push(userInput); // adds input to array
+            }
+        }
+
+        // has the user enter amount of number
+        // has the user enter numbers to choose from
+        // randomly chooses a number and has the user guess
+        function guessTheNum() {
+
+            var numArr = [];
+
+            // get size of array
+            do {
+                numArrSize = prompt("how many numbers do you want to enter?", "");
+            } while (!verifyInput(numArrSize)); // checks for valid input
+
+            // fill array with user input
+            userFillArray(numArr, numArrSize);
+
+            // get random number from array 
+            var chosenNum = numArr[Math.floor(Math.random() * numArrSize)];
+
+            // keep guessing until the user gets it right
+            while (true) {
+                var guess = prompt("Guess the number");
+                // guessed correctly
+                if (guess === chosenNum) {
+                    console.log("correct!");
+                    break;
+                }
+                // did not enter a number
+                else if (!verifyInput(guess)) {
+                    console.log("that's not even a number!");
+                }
+            }       
+        }
+
+        guessTheNum();
+
+    
+    </script>
+    
+    
+</body>
+</html>
