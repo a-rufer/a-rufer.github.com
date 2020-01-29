@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Distance Converter</title>
+
+	<!--/ /-------- Normalize CSS --------/ /-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+	
+	<!--/ /-------- Google Fonts --------/ /-->
+	<link href="https://fonts.googleapis.com/css?family=Oswald|PT+Sans&display=swap" rel="stylesheet">
+	
+	<!--/ /-------- My Styles --------/ /-->
+	<link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<h1>Miles to Kilometers Converter</h1>
+    
+    <div class="container top">
+    	<p>Type in a number of miles and click the button to convert the distance to kilometers.</p>
+        
+        <form method="post" action="somephpfile.php" id="convert">
+        
+        	<input type="text" name="distance" id="distance" placeholder="distance">
+            <input type="submit" name="convertdist" value="Convert Distance">
+        
+        </form>
+    </div>
+    <div class="container bottom" id="answer">
+    	<h2 class="invisible">Answer goes here</h2>
+    </div>
+    
+	<p id="directions">Press the "K" key to switch to kilometer converstion, press the "M" key to switch to mile conversion</p>
+	
+	<script>
+
+		var startUnit = 'M'; // keeps track of the unit you start with
+
+		// switches the direction of conversion
+		document.addEventListener('keydown', function(event) {
+			var keyPressed = String.fromCharCode( event.which );
+			var h1Tag = document.querySelector("h1");
+
+			if (keyPressed == 'M') {
+				startUnit = 'M';
+				h1Tag.innerHTML = "Miles to Kilometers Converter";
+			}
+			else if (keyPressed == 'K') {
+				startUnit = 'K';
+				h1Tag.innerHTML = "Kilometers to Miles Converter";
+			}
+		});
+
+		// returns the a string explaining the conversion from startUnit to the corresponding 
+		function convert(num, startUnit) {
+			if (startUnit == 'M') {
+				var distInKm = num * 1.609344;
+				var roundedDistInKm = Math.round(distInKm*1000) / 1000; // rounds to 3 decimal places
+				return `${num} miles converts to ${roundedDistInKm} kilometers`;
+			}
+			else if (startUnit == 'K') {
+				var distInMi = num * 0.621371192;
+				var roundedDistInMi = Math.round(distInMi*1000) / 1000; // rounds to 3 decimal places
+				return `${num} kilometers converts to ${roundedDistInMi} miles`;
+			}
+		}
+
+		var form = document.querySelector("form");
+		// converts the input upon submission
+		form.addEventListener("submit", function(event) {
+
+			// get input
+			event.preventDefault();
+			var userInput = document.querySelector("input").value;
+			var userNum = parseFloat(userInput);
+			var result;
+
+			// case for valid input
+			if (userNum) {
+				result = convert(userNum, startUnit);
+			}
+			// case for invalid input
+			else {
+				result = "please enter a number";
+			}
+
+			// display results
+			var answerH2 = document.querySelector("h2");
+			answerH2.innerHTML = result;
+			answerH2.removeAttribute("class");
+		});
+
+		
+
+
+	</script>
+
+</body>
+</html>
