@@ -8,12 +8,15 @@ ul {
     list-style-type: none;
 }
 
-a {
+/* a {
     text-decoration: none;
-}
+} */
 
 /* general formatting */
 
+html {
+    scroll-behavior: smooth;
+}
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -34,14 +37,15 @@ h1 {
     font-size: 36px;
     margin-bottom: 40px;
     padding-bottom: 15px;
-    border-bottom: solid 7px #3D5066 ;
+    border-bottom: solid 5px #3D5066 ;
     line-height: 1.2em;
 }
 
 h2 {
     padding-bottom: 10px;
-    border-bottom: solid 5px #3D5066;
+    border-bottom: solid 3px #3D5066;
     margin-bottom: 20px;
+    color: white;
     
 }
 
@@ -76,6 +80,7 @@ header nav {
 
 header nav ul li a {
     color: white;
+    text-decoration: none;
     font-size: 22px;
     text-align: center;
     padding: 10px;
@@ -104,15 +109,16 @@ main article p {
     text-indent: 40px;
 }
 
-article section img {
+article img {
     width: 100%;
     margin-bottom: 3%;
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    border-top: solid 7px #3D5066;
+    padding: 40px;
+    border-top: solid 5px #3D5066;
+    margin-top: 60px;
 }
 footer a {
     color: #2C2D2D;
