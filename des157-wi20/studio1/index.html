@@ -11,75 +11,118 @@
 </head>
 <body>
 
-    <h1>MadLibs</h1>
-    <h2>A Procrastination Story</h2>
-    <img src="" alt="grade">
+    <div id="container">
 
-    <article>
+    <header>
+        <h1>MadLibs</h1>
+        <h2>A Procrastination Story</h2>
+        
+    </header>
+    
+    <main>
 
-        <p>enter the words below to complete the madlib:</p>
+        <article id="form">
 
-        <form id="blanks" method="POST">
+            <p>enter the words below to complete the madlib:</p>
 
-            <label for="blank1">verb</label>
-            <input type="text" name="blank1" id="blank1" placeholder="type a verb here!"> 
+            <form id="blanks" method="POST">
 
-            <label for="blank2">unit of time</label>
-            <input type="text" name="blank2" id="blank2" placeholder="type a unit of time here!">
+                <div>
+                    <label for="blank1">verb</label>
+                    <input type="text" name="blank1" id="blank1"> 
+                </div>
 
-            <label for="blank3">day of the week</label>
-            <input type="text" name="blank3" id="blank3" placeholder="type a day here!">
+                <div>
+                    <label for="blank2">unit of time</label>
+                    <input type="text" name="blank2" id="blank2">
+                </div>
 
-            <label for="blank4">verb</label>
-            <input type="text" name="blank4" id="blank4" placeholder="type a verb ending in '-ing' here!">
+                <div>
+                    <label for="blank3">weekday</label>
+                    <input type="text" name="blank3" id="blank3">
+                </div>
 
-            <label for="blank5">noun</label>
-            <input type="text" name="blank5" id="blank5" placeholder="type a noun here!">
+                <div>
+                    <label for="blank4">verb</label>
+                    <input type="text" name="blank4" id="blank4">
+                </div>
 
-            <label for="blank6">plural noun</label>
-            <input type="text" name="blank6" id="blank6" placeholder="type a plural noun here!">
+                <div>
+                    <label for="blank5">noun</label>
+                    <input type="text" name="blank5" id="blank5">
+                </div>
 
-            <label for="blank7">adjective</label>
-            <input type="text" name="blank7" id="blank7" placeholder="type an adjective here!">
+                <div>
+                    <label for="blank6">plural noun</label>
+                    <input type="text" name="blank6" id="blank6">
+                </div>
 
-            <label for="blank8">adjective</label>
-            <input type="text" name="blank8" id="blank8" placeholder="type an adjective here!">
+                <div>
+                    <label for="blank7">adjective</label>
+                    <input type="text" name="blank7" id="blank7">
+                </div>
 
-            <label for="blank9">adjective</label>
-            <input type="text" name="blank9" id="blank9" placeholder="type an adjective here!">
+                <div>
+                    <label for="blank8">adjective</label>
+                    <input type="text" name="blank8" id="blank8">
+                </div>
 
-            <label for="blank10">verb</label>
-            <input type="text" name="blank10" id="blank10" placeholder="type a verb here!">
+                <div>
+                    <label for="blank9">adjective</label>
+                    <input type="text" name="blank9" id="blank9">
+                </div>
+
+                <div>
+                    <label for="blank10">verb</label>
+                    <input type="text" name="blank10" id="blank10">
+                </div>
+
+                <div>
+                    <label for="blank11">unit of time</label>
+                    <input type="text" name="blank11" id="blank11">
+                </div>
+
+                <div>
+                    <label for="blank12">unit of time</label>
+                    <input type="text" name="blank12" id="blank12">
+                </div>
+
+                <div>
+                    <label for="blank13">noun</label>
+                    <input type="text" name="blank13" id="blank13">
+                </div>
+
+                <div>
+                    <label for="blank14">noun</label>
+                    <input type="text" name="blank14" id="blank14">
+                </div>
+
+                <input type="submit" value="make the story!">
+
+            </form>
+
+            <p>or just procrastinate on this too...</p>
+
+        </article>
+
+        <article id="story" class="hidden">
+            <img src="B-.gif" alt="grade" id="grade" class="hidden" width="200" height="200">
+
+            <p>They say that the best time to <span id="1"></span> a tree was 20 <span id="2"></span> ago. The
+                second best time is <span id="3"></span> . Everyone who procrastinates, though, knows that <span id="4"></span> your <span id="5"></span> is best done tomorrow. While you procrastinate, you can do great, productive things like washing the <span id="6"></span>, binge-watching a(n) <span id="7"></span> TV show, or better yet, having a(n) <span id="8"></span> crisis. When the deadline is approaching, a <span id="9"></span> thing to do is <span id="10"></span> and try to do 5 <span id="11"></span> of work in 5 <span id="12"></span>. In the end, the procrastinator will be amazingly <span id="13"></span>-efficient in making a finished <span id="14"></span>.
+            </p>
+
+            <!-- <input type="submit" value="try again?"> -->
+
+        </article>
+
+        <article id="instructions">
             
-            <label for="blank11">unit of time</label>
-            <input type="text" name="blank11" id="blank11" placeholder="type a unit of time here!">
+            <p>Get a friend to help you fill in the blanks! Or a random stranger if you're feeling brave.</p>
+            <p>Once you finish filling in the blanks, click "make the story" to have your story appear here.</p>
+        </article>
 
-            <label for="blank12">unit of time</label>
-            <input type="text" name="blank12" id="blank12" placeholder="type a unit of time here!">
-
-            <label for="blank13">noun</label>
-            <input type="text" name="blank13" id="blank13" placeholder="type a noun here!">
-
-            <label for="blank14">noun</label>
-            <input type="text" name="blank14" id="blank14" placeholder="type a noun here!">
-            
-            <input type="submit" value="make the story!">
-
-        </form>
-
-        <p>or just procrastinate on this too...</p>
-
-    </article>
-
-    <article id="story">
-
-        <p>They say that the best time to <span id="1"></span> a tree was 20 <span id="2"></span> ago. The
-            second best time is <span id="3"></span> . Everyone who procrastinates, though, knows that <span id="4"></span> your <span id="5"></span> is best done tomorrow. While you procrastinate, you can do great, productive things like washing the <span id="6"></span>, binge-watching a(n) <span id="7"></span> TV show, or better yet, having a(n) <span id="8"></span> crisis. When the deadline is approaching, a <span id="9"></span> thing to do is <span id="10"></span> and try to do 5 <span id="11"></span> of work in 5 <span id="12"></span>. In the end, the procrastinator will be amazingly <span id="13"></span>-efficient in making a finished <span id="14"></span>.
-        </p>
-
-        <!-- <input type="submit" value="try again?"> -->
-
-    </article>
+    </main>
 
 
     <footer>
@@ -87,6 +130,7 @@
         <a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a>
     </footer>
 
+    </div>
 
 
     

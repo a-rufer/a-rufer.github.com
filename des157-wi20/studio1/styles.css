@@ -5,9 +5,115 @@
     padding: 0px;
 }
 
+
+/* general styling */
+
+
+body {
+    max-width: 950px;
+    margin: auto;
+    background-color: rgb(255, 171, 157);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    background-color: white;
+}
+
 h1 {
     font-family: 'Domine', serif;
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-top: 40px;
 }
+h2 {
+    font-family: 'Domine', serif;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+header, main, footer {
+    margin: 0px 70px;
+}
+
+main {
+    display: flex;
+}
+article:first-of-type {
+    flex: 2;
+    margin-right: 40px;
+}
+article {
+    flex: 3;
+    margin-right: none;
+}
+
+article form {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+article form div {
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+article form input {
+    padding: 5px;
+    padding-left: 7px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    border: solid 1px rgb(252, 160, 144);
+    border-radius: 5px;
+    color: black;
+}
+article form input[type=submit] {
+    margin-top: 15px;
+    padding: 7px 10px;
+    background-color: rgb(253, 193, 182);
+}
+article form input[type=submit]:hover {
+    /* background-color: white; */
+    background-color: rgb(252, 160, 144);
+}
+
+article p {
+    line-height: 2em;
+    margin-bottom: 40px;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 50px 0px;
+}
+/* interactive parts */
+
+.hidden {
+    display: none;
+}
+
+#story {
+    position: relative;
+}
+#story img {
+    position: relative;
+    top: -60px;
+    left: 200px;
+    display: none;
+
+    -webkit-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1); /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
+    -moz-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
+    -o-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
+    transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045); /* custom */
+}
+#story p {
+    position: relative;
+    top: -30px;
+}
+
 
 #story span {
     color: red;
