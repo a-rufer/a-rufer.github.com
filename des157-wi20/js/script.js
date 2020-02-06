@@ -1,19 +1,24 @@
 class Circle {
+
+    
   
     constructor(x, y, rangeX, rangeY) {
+      this.colors = [[124,165,183], [61,80,102], [138,94,163]];
       this.xpos = x;
       this.ypos = y;
       this.rangeX = rangeX;
       this.rangeY = rangeY;
       this.speedX = random(-5, 5);
       this.speedY = random(-5, 5);
-      this.r = random(0, 255);
-      this.g = random(0, 255);
-      this.b = random(0, 255);
+      this.color = this.colors[Math.floor(Math.random() * Math.floor(3))];
+      this.r = this.color[0];
+      this.g = this.color[1];
+      this.b = this.color[2];
+      this.size = random(20, 120);
     }
      
-    incrSize( x){
-        this.size += this.x; 
+    incrSize(x){
+        this.size += x; 
      }
      
     drawSelf() {
@@ -23,8 +28,8 @@ class Circle {
      }
      
     collide( x,  y) {
-        this.speedX += this.x;
-        this.speedY += this.y;
+        this.speedX += x;
+        this.speedY += y;
      }
      
     getX() {
@@ -47,6 +52,13 @@ class Circle {
             this.speedY = -this.speedY;
         }
         this.drawSelf();
+
+        if (this.speedX > 10) {
+            this.speedX--;
+        }
+        if (this.speedY > 10) {
+            this.speedY--;
+        }
     }
     
     
@@ -54,8 +66,8 @@ class Circle {
   }
 
 
-var X_SIZE = 800;
-var Y_SIZE = 250;
+const X_SIZE = 800;
+const Y_SIZE = 250;
 
 var counter = 0;
 var circles = [];
@@ -71,6 +83,7 @@ function setup() {
 }
 
 function draw() {
+
   background("#000000");
   
     
@@ -94,6 +107,7 @@ function initializeCircles() {
     circles[i] = cNew;
     counter++;
   }
+  console.log(circles);
 }
 
 function addCircle() {
