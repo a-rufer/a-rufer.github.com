@@ -26,14 +26,9 @@
     }
 
     function revealStory() {
-        document.getElementById("story").removeAttribute("class");
-        document.getElementById("grade").removeAttribute("class");
-        document.getElementById("grade").style.display = "initial"
-        document.getElementById("instructions").setAttribute("class", "hidden");
-        //document.querySelector("#story").style.background = "url(B-.gif) no-repeat";
-        //document.querySelector("#story").style.backgroundSize = "contain";
-        //document.querySelector("#story").style.backgroundPosition = "right";
-
+        document.getElementById("story").removeAttribute("class"); // show story
+        document.getElementById("grade").style.visibility = "visible" // show grade
+        document.getElementById("instructions").setAttribute("class", "hidden"); // hide instructions
 
 
     }

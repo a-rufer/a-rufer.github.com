@@ -6,7 +6,7 @@
 }
 
 
-/* general styling */
+/* general styling and typography*/
 
 
 body {
@@ -33,6 +33,12 @@ h2 {
     margin-bottom: 40px;
 }
 
+article p {
+    line-height: 2em;
+}
+
+/* formatting */
+
 header, main, footer {
     margin: 0px 70px;
 }
@@ -41,17 +47,17 @@ main {
     display: flex;
 }
 article:first-of-type {
-    flex: 2;
+    flex: 3;
     margin-right: 40px;
 }
 article {
-    flex: 3;
+    flex: 4;
     margin-right: none;
 }
 
 article form {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     text-align: right;
 }
 article form div {
@@ -64,30 +70,25 @@ article form input {
     padding: 5px;
     padding-left: 7px;
     margin-bottom: 5px;
-    margin-left: 10px;
     border: solid 1px rgb(252, 160, 144);
     border-radius: 5px;
-    color: black;
 }
+
 article form input[type=submit] {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 7px 10px;
     background-color: rgb(253, 193, 182);
 }
 article form input[type=submit]:hover {
-    /* background-color: white; */
     background-color: rgb(252, 160, 144);
-}
-
-article p {
-    line-height: 2em;
-    margin-bottom: 40px;
 }
 
 footer {
     margin-top: 50px;
     padding: 50px 0px;
 }
+
+
 /* interactive parts */
 
 .hidden {
@@ -99,21 +100,15 @@ footer {
 }
 #story img {
     position: relative;
-    top: -60px;
+    top: -90px;
     left: 200px;
-    display: none;
-
-    -webkit-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1); /* older webkit */
-    -webkit-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
-    -moz-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
-    -o-transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045);
-    transition: all 500ms cubic-bezier(0.000, 0.910, 0.005, 1.045); /* custom */
+    visibility: hidden;
 }
+
 #story p {
     position: relative;
-    top: -30px;
+    top: -60px;
 }
-
 
 #story span {
     color: red;
