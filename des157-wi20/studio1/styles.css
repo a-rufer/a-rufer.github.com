@@ -33,7 +33,7 @@ h2 {
     margin-bottom: 40px;
 }
 
-article p {
+p {
     line-height: 2em;
 }
 
@@ -100,14 +100,13 @@ footer {
 }
 #story img {
     position: relative;
-    top: -90px;
+    top: -155px;
     left: 200px;
-    visibility: hidden;
 }
 
 #story p {
     position: relative;
-    top: -60px;
+    top: -140px;
 }
 
 #story span {
