@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Backpack</title>
+</head>
+<body>
+    
+    <header>
+        <h1>arbitrary items from my backpack</h1>
+    </header>
+
+    <main>
+
+        <div id="content">
+
+            <div><img src="images/helmet.jpg"></div>
+
+            <div class="middle">
+                <img id="center" src="images/sketchpad.jpg">
+                <h2>notepad</h2>
+                <p>I use a small sketchpad as a notebook. It mostly has lots of lists and plans, and it keeps me organized and sane.</p>
+            </div>
+
+            <div><img src="images/tupperware.jpg"></div>
+
+        </div>
+
+
+    </main>
+
+    <footer>
+        <a href="https://validator.w3.org/check?uri=referer">Valid HTML</a>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a>
+    </footer>
+
+
+    <script>
+
+        const images = ["images/helmet.jpg", "images/sketchpad.jpg", "images/tupperware.jpg"];
+        const names = ["helmet", "notepad", "tupperware"];
+        const descrips = [
+            "I bike with a helmet because I have zero trust in the biking abilities of others. It doesn't usually fit in my backpack but whatever.",
+            "I use a small sketchpad as a notebook. It mostly has lots of lists and plans, and it keeps me organized and sane.",
+            "I'm on campus all day from 9am to 6pm if not longer, so I bring my lunch in a tupperware container."
+        ]
+        
+        const imgs = document.querySelectorAll("#content div img");
+        
+        var divs = document.querySelectorAll("#content div");
+        var centerDiv = divs[1];
+
+        let rotateCounter = 0;
+
+        // not working idk idk idk
+        function getXPos(el) {
+            var boundingRect = el.getBoundingClientRect();
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            return rect.left + scrollLeft;
+        }
+        function getYPos(el) {
+            var boundingRect = el.getBoundingClientRect();
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            return boundingRect.left + scrollLeft;
+        }
+
+        function rotateRight() {
+            // update counter
+            rotateCounter = rotateCounter - 1;
+            if (rotateCounter < 0) {
+                rotateCounter = imgs.length - 1;
+            }
+
+            // swap image sources
+            for (let i=0; i<imgs.length; i++) {
+                imgs[i].src = images[(i + rotateCounter) % images.length];
+            }
+
+            // correct name and description
+            centerDiv.querySelector("h2").innerHTML = names[(1 + rotateCounter) % images.length];
+            centerDiv.querySelector("p").innerHTML = descrips[(1 + rotateCounter) % images.length];
+            
+        }
+        function rotateLeft() {
+            // updateCounter
+            rotateCounter = (rotateCounter + 1) % imgs.length;
+            
+            // swap image sources
+            for (let i=0; i<imgs.length; i++) {
+                imgs[i].src = images[(i + rotateCounter) % images.length];
+            }
+
+            // correct name and description
+            centerDiv.querySelector("h2").innerHTML = names[(1 + rotateCounter) % images.length];
+            centerDiv.querySelector("p").innerHTML = descrips[(1 + rotateCounter) % images.length];
+
+        }
+
+        document.addEventListener("keydown", function(e){
+            e.preventDefault();
+            const key = e.which;
+            // left or down arrow
+            if (e.which == 37 || e.which == 40) {
+                rotateLeft();
+            }
+            // right or up arrow
+            else if (e.which == 38 || e.which == 39) {
+                rotateRight();
+            }
+        });
+
+
+        // rotate right on  click on element
+        divs[0].addEventListener("click", function(){
+            console.log("clicked");
+            rotateRight();
+        });
+
+        // rotate right on  click on element
+        divs[2].addEventListener("click", function(){
+            console.log("clicked");
+            rotateLeft();
+        });
+
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

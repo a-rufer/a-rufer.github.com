@@ -1,0 +1,58 @@
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #A3BAC3;
+}
+#content {
+    display: flex;
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    /* align-items: flex-end; */
+    overflow: hidden;
+}
+
+/* sizes */
+
+#content .middle {
+    margin: 0px 30px;
+    background-color: white;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+}
+#center {
+    width: 400px;
+    height: auto;
+}
+
+.left {
+    position: relative;
+    left: -100px;
+}
+.right {
+    position: relative;
+    left: 100px;
+}
+.middle {
+    position: relative;
+    width: 400px;
+    height: 600px;
+}
+
+/* applying transition */
+img {
+    transition: 1s all;
+}
+
+
+footer {
+    margin:auto;
+    text-align: center;
+}
