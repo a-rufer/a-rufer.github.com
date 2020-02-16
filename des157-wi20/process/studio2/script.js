@@ -1,4 +1,5 @@
 (function(){
+
     "use strict"
 
     const images = ["images/helmet.jpg", "images/sketchpad.jpg", "images/tupperware.jpg"];
@@ -30,7 +31,7 @@
         // swap image sources
         for (let i=0; i<imgs.length; i++) {
             transRight(i);
-            imgs[i].style.alt = names[(1 + rotateCounter) % images.length];
+            imgs[i].alt = names[(i + rotateCounter) % images.length];
         }
 
         // correct name and description
@@ -45,7 +46,7 @@
         // move images
         for (let i=0; i < imgs.length; i++) {
             transLeft(i);
-            imgs[i].style.alt = names[(1 + rotateCounter) % images.length];
+            imgs[i].alt = names[(i + rotateCounter) % images.length];
         }
 
         // correct name and description
