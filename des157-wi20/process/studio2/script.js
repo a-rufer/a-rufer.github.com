@@ -80,13 +80,14 @@
 
 
     let touchStartPos = 0;
+    let touchEndPos = 0;
     // rotate right on swipe on element
-    imgs[0].addEventListener("touchstart", function(event){
+    document.addEventListener("touchstart", function(event){
         touchStartPos = event.touches[0].clientX;
     });
 
     // rotate left on swipe on element
-    imgs[2].addEventListener("touchend", function(event){
+    document.addEventListener("touchend", function(event){
         touchEndPos = event.changedTouches[0].clientX;
         if (touchStartPos < touchEndPos) {
             rotateLeft();
