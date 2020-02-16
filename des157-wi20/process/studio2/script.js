@@ -4,7 +4,7 @@
     const images = ["images/helmet.jpg", "images/sketchpad.jpg", "images/tupperware.jpg"];
     const names = ["helmet", "notepad", "tupperware"];
     const descrips = [
-        "I bike with a helmet because I have zero trust in the biking abilities of others. It doesn't usually fit in my backpack but whatever.",
+        "I bike with a helmet because I don't trust in the biking abilities of others. It doesn't usually fit in my backpack but whatever.",
         "I use a small sketchpad as a notebook. It mostly has lots of lists and plans, and it keeps me organized and sane.",
         "I'm on campus all day from 9am to 6pm if not longer, so I bring my lunch in a tupperware container."
     ]
@@ -102,14 +102,18 @@
     // swap img src too
     function transLeft(i) {
 
-        if (i === 0) {
+        if (i == 0) {
 
             const newPos = getXPos(imgs[2]);
             const currPos = getXPos(imgs[0])
-
+            
+            if (window.innerWidth < 700) {
+                imgs[i].style.left = -400 + "px";
+            }
+            else {
+                imgs[i].style.left = (newPos - currPos) + "px";
+            }
             imgs[i].style.transition = "all 0.5s";
-
-            imgs[i].style.left = (newPos - currPos)+ "px";
             
         }
         else {
@@ -123,6 +127,9 @@
 
             
         }
+
+        // actually moves the image sources
+        // waits for the animation to finish first
         setTimeout(function(){
                 imgs[i].style.transition = "none"; 
                 imgs[i].src = images[(i + rotateCounter) % images.length];
@@ -141,10 +148,14 @@
             
             const newPos = getXPos(imgs[0]);
             const currPos = getXPos(imgs[2]);
-
+            
+            if (window.innerWidth < 700) {
+                imgs[i].style.left = 900 + "px";
+            }
+            else {
+                imgs[i].style.left = (newPos - currPos) + "px";
+            }
             imgs[i].style.transition = "all 0.5s";
-
-            imgs[i].style.left = (newPos - currPos) + "px";
             
         }
         else {
@@ -165,4 +176,30 @@
                 
         }, 500);
     }
+
+    // inverts colors on select change
+    document.querySelector("select").addEventListener('change', function(){
+        let body = document.querySelector("body");
+        let h1 = document.querySelector("h1");
+        let h2 = document.querySelector("h2");
+        let imgs = document.querySelectorAll("img");
+        if (document.querySelector("select").value == "original") {
+            body.style.backgroundColor = "rgb(103, 243, 234)";
+            h1.style.color = "#2EC4B6";
+            h2.style.color = "#2EC4B6";
+            imgs[0].style.borderColor = "#2EC4B6";
+            imgs[1].style.borderColor = "#FF9F1C";
+            imgs[2].style.borderColor = "#2EC4B6";
+        }
+        else if (document.querySelector("select").value == "inverted") {
+            body.style.backgroundColor = "#FFBF69";
+            h1.style.color = "#FF9F1C";
+            h2.style.color = "#FF9F1C";
+            imgs[0].style.borderColor = "#FF9F1C";
+            imgs[1].style.borderColor = "#2EC4B6";
+            imgs[2].style.borderColor = "#FF9F1C";
+        }
+    });
+
+
 }())

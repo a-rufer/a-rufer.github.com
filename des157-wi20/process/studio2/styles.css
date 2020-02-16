@@ -56,9 +56,13 @@ img {
     position: relative;
     left:0px;
     transition: all 0.5s ;
-    border: solid 7px #CBF3F0;
+    border: solid 7px #2EC4B6;
     border-radius: 20px;
     transition: all 2s;
+}
+
+img:hover {
+    border: solid 7px #CBF3F0;
 }
 
 article {
@@ -91,6 +95,10 @@ footer {
     text-align: center;
 }
 
+footer aside select {
+    margin: 15px;
+}
+
 
 @media (min-width: 700px) {
     img {
@@ -105,9 +113,13 @@ footer {
 
     #content #center {
         border: solid 10px #FF9F1C;
+        margin: 0px 5vw;
     }
     
     img {
+        border: solid 10px #2EC4B6;
+    }
+    img:hover {
         border: solid 10px #CBF3F0;
     }
 
