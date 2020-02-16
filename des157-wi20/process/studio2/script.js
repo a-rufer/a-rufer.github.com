@@ -90,10 +90,10 @@
     imgs[1].addEventListener("touchend", function(event){
         touchEndPos = event.changedTouches[0].clientX;
         if (touchStartPos < touchEndPos) {
-            rotateLeft();
+            rotateRight();
         }
         if (touchStartPos > touchEndPos) {
-            rotateRight();
+            rotateLeft();
         }
     });
 
