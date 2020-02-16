@@ -5,54 +5,110 @@
 }
 
 body {
-    background-color: #A3BAC3;
+    background-color: rgb(103, 243, 234);
+    font-family: 'Raleway', sans-serif;
 }
 #content {
     display: flex;
-    position: relative;
     margin: auto;
     justify-content: center;
-    /* align-items: flex-end; */
     overflow: hidden;
 }
 
-/* sizes */
+/* typography */
 
-#content .middle {
-    margin: 0px 30px;
+h1, h2 {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    color: #2EC4B6;
+    margin: 40px 20px;
     background-color: white;
+    /* border: solid 7px #FF9F1C; */
+    border-radius: 20px;
+    padding: 20px;
+    
+}
+h2 {
+    color: #2EC4B6;
+    margin-bottom: 15px;
+}
+p {
+    color: 	#404040;
+    font-size: 18px;
+    line-height: 1.8em;
+}
+
+/* size and location */
+
+#content #center {
+    margin: 0px 30px;
+    border: solid 7px #FF9F1C;
 }
 
 img {
-    width: 300px;
-    height: 300px;
-}
-#center {
-    width: 400px;
-    height: auto;
+    width: 250px;
+    height: 250px;
+
+    position: relative;
+    left:0px;
+    transition: all 0.5s ;
+    border: solid 7px #CBF3F0;
+    border-radius: 20px;
+    transition: all 2s;
 }
 
-.left {
-    position: relative;
-    left: -100px;
-}
-.right {
-    position: relative;
-    left: 100px;
-}
-.middle {
-    position: relative;
-    width: 400px;
-    height: 600px;
+article {
+    background-color: white;
+    /* border: solid 7px #FF9F1C; */
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
 }
 
-/* applying transition */
-img {
-    transition: 1s all;
+#popup {
+    opacity: 0.8;
+    background-color: #CBF3F0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#popup p {
+    margin: auto;
+    text-align: center;
+    max-width: 300px;
 }
 
 
 footer {
     margin:auto;
+    margin: 50px; 
     text-align: center;
+}
+
+
+@media (min-width: 700px) {
+    img {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    main article, header {
+        margin: auto;
+        margin: 10vh 20vw;
+    }
+
+    #content #center {
+        border: solid 10px #FF9F1C;
+    }
+    
+    img {
+        border: solid 10px #CBF3F0;
+    }
+
 }

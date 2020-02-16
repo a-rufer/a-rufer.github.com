@@ -1,0 +1,116 @@
+
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* general styling and typography*/
+
+
+body {
+    max-width: 950px;
+    margin: auto;
+    background-color: rgb(255, 171, 157);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    background-color: white;
+}
+
+h1 {
+    font-family: 'Domine', serif;
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-top: 40px;
+}
+h2 {
+    font-family: 'Domine', serif;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+p {
+    line-height: 2em;
+}
+
+/* formatting */
+
+header, main, footer {
+    margin: 0px 70px;
+}
+
+main {
+    display: flex;
+}
+article:first-of-type {
+    flex: 3;
+    margin-right: 40px;
+}
+article {
+    flex: 4;
+    margin-right: none;
+}
+
+article form {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: right;
+}
+article form div {
+    margin: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+article form input {
+    padding: 5px;
+    padding-left: 7px;
+    margin-bottom: 5px;
+    border: solid 1px rgb(252, 160, 144);
+    border-radius: 5px;
+}
+
+article form input[type=submit] {
+    margin-top: 20px;
+    padding: 7px 10px;
+    background-color: rgb(253, 193, 182);
+}
+article form input[type=submit]:hover {
+    background-color: rgb(252, 160, 144);
+}
+
+footer {
+    margin-top: 50px;
+    padding: 50px 0px;
+}
+
+
+/* interactive parts */
+
+.hidden {
+    display: none;
+}
+
+#story {
+    position: relative;
+}
+#story img {
+    position: relative;
+    top: -155px;
+    left: 200px;
+}
+
+#story p {
+    position: relative;
+    top: -140px;
+}
+
+#story span {
+    color: red;
+    border-bottom: 1px solid black;
+    padding: 0px 10px;
+}
