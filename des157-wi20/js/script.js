@@ -1,6 +1,4 @@
 class Circle {
-
-    
   
     constructor(x, y, rangeX, rangeY) {
       this.colors = [[124,165,183], [61,80,102], [138,94,163]];

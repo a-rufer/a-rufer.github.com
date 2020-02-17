@@ -1,10 +1,10 @@
 /* additional style resets */
-* {
+header, main, h1, h2, h3, nav, nav ul, div, article, a, p, img, footer {
     padding: 0px;
     margin: 0px;
 }
 
-ul {
+nav ul {
     list-style-type: none;
 }
 
