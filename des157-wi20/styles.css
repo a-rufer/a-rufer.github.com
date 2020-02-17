@@ -99,7 +99,7 @@ main article ul li a {
 }
 main article ul li a:hover {
     background-color: #7CA5B7;
-    color: #FFE2EB;
+    color: white;
 }
 
 footer {
