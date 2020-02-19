@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>War</title>
+</head>
+<body>
+
+    <header>
+        <h1>War</h1>
+    </header>
+
+    <main>
+        <article>
+            <h2>Instructions</h2>
+            <p>Each player turns over the top card of their deck. The player with the higher ranked card takes both and puts them their deck. If the cards have the same rank, it is called "war". Each player puts another card facedown and another faceup, and play based on the new cards, repeating until one card is a higher rank, and then the player with the higher ranked card takes all of the accumulated cards from the center.</p>
+            <p>You win by having all of the cards.</p>
+        </article>
+
+        <button id="start">Start the Game</button>
+        <button id="next">next round</button>
+
+        <article id="game">
+
+            <div id="p1deck">
+                <img src="images/cardback.svg" width="225" height="300">
+                <p>player 1's deck</p>
+                <!-- <button id="p1play">play a card</button> -->
+            </div>
+
+            <div id="warcards">
+                <img id="p1" src="images/blankspace.svg" width="225" height="300">
+                <img id="war" src="images/blankspace.svg" width="225" height="300">
+                <img id="p2" src="images/blankspace.svg" width="225" height="300">
+            </div>
+
+            <div id="p2deck">
+                <img src="images/cardback.svg" width="225" height="300">
+                <p>player 2's deck</p>
+                <!-- <button id="p2play">play a card</button> -->
+            </div>
+
+        </article>
+
+        <article id="message"></article>
+
+    </main>
+
+    <footer>
+        <a href="https://validator.w3.org/check?uri=referer">Valid HTML</a>
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a>
+    </footer>
+
+    <script>
+
+        // areas
+        var gameArea = document.getElementById("game");
+        var p1deck = document.getElementById("p1deck");
+        var p2deck = document.getElementById("p2deck");
+        var msgArea = document.getElementById("message");
+
+        // buttons
+        var p1play = document.getElementById("p1play");
+        var p2play = document.getElementById("p2play");
+        var start = document.getElementById("start");
+
+        // images
+        var p1Card = document.getElementById("p1");
+        var warCards = document.getElementById("war")
+        var p2Card = document.getElementById("p2");
+
+
+        var game = {
+            player1: {
+                numCards: 0,
+                cardArray: [],
+            },
+            player2: {
+                numCards: 0,
+                cardArray: [],
+            },
+            pile1: [],
+            pile2: []
+        };
+
+
+        // start the game
+        start.addEventListener("click", function(){
+
+            msgArea.innerHTML = "";
+            console.log("1");
+            fillAndShuffle(game.player1.cardArray, game.player2.cardArray);
+            console.log(game.player1.cardArray);
+            console.log(game.player2.cardArray);
+            start.innerHTML = "Restart Game";
+            p1deck.innerHTML += '<button id="p1play">play a card</button>';
+            p2deck.innerHTML += '<button id="p2play">play a card</button>';
+
+            
+
+            // while (false && !isGameOver()) {
+            //     console.log("2");
+            //     // wait for both players to play a card
+            //     let p1played = false;
+            //     let p2played = false;
+            //     while (false && !(p1played && p2played)) {
+
+            //         p1play.addEventListener('click', function(){
+            //             if (!p1played) {
+            //                 p1played = true;
+            //                 console.log(p1played);
+            //                 //playCard(game.player1);
+            //             }
+            //         });
+            //         p2play.addEventListener('click', function(){
+            //             if (!p2played) {
+            //                 p2played = true;
+            //                 console.log(p2played);
+            //                 //playCard(game.player2);
+            //             }
+            //         });
+            //         console.log("3");
+                    
+            //     }
+            //     p1played = false;
+            //     p2played = false;
+            //     console.log("4");
+            //     // evaluate cards and display message
+            //     evaluate();
+
+            //     // loop to next round
+
+            // }
+
+            // end of game
+            const winner = getWinner();
+            msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
+            start.innerHTML = "Play Again?";
+        });
+
+        function fillAndShuffle(p1, p2){
+            const array = [];
+            // fill with 52 cards
+            for (let i = 0; i < 52; i++) {
+                array[i] = i+1;
+            }
+            // 52 random swaps
+            for (let i = 0; i < 52; i++) {
+                const rand = Math.ceil(Math.random()*52);
+                const temp = array[i];
+                array[i] = array[rand];
+                array[rand] = temp;
+            }
+            // partition to players
+            for (let i=0; i<26; i++) {
+                p1[i] = array[i];
+                p2[i] = array[i+26];
+            }
+        }
+
+        function isGameOver() {
+            return game.player1.cardArray.length == 0 || game.player2.cardArray.length == 0;
+        }
+        function getWinner() {
+            return game.player1.cardArray.length == 0 ? 1 : 2;
+        }
+
+        // function evaluate() {
+        //     //if (game)
+        // }
+
+
+        function playCard(player) {
+            
+            // console.log(player.cardArray);
+            let topCard = player.cardArray.pop();
+            // console.log(topCard);
+
+            if (player == game.player1) {
+                game.pile1.push(topCard);
+                if (topCard < 10) {topCard = `0${topCard}`;}
+                console.log(topCard);
+                p1Card.src = `images/cards-${topCard}.svg`;
+                console.log("1");
+            }
+            else {
+                if (topCard < 10) {topCard = "0" + topCard;}
+                game.pile2.push(topCard);
+                p2Card.src = `images/cards-${topCard}.svg`;
+                console.log("1");
+            }
+        }
+
+        // p1play.addEventListener('click', function(){
+        //     playCard(game.player1);
+        // });
+        // p2play.addEventListener('click', function(){
+        //     playCard(game.player2);
+        // });
+        
+        document.getElementById("next").addEventListener('click', function(){
+            playCard(game.player1);
+            playCard(game.player2);
+            // evaluate cards and display message
+            evaluate();
+
+        });
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
