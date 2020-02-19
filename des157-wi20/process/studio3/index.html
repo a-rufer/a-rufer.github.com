@@ -28,6 +28,7 @@
             <div id="p1deck">
                 <img src="images/cardback.svg" width="225" height="300">
                 <p>player 1's deck</p>
+                <p>number of cards: <span id="p1num"></span></p>
                 <!-- <button id="p1play">play a card</button> -->
             </div>
 
@@ -40,6 +41,7 @@
             <div id="p2deck">
                 <img src="images/cardback.svg" width="225" height="300">
                 <p>player 2's deck</p>
+                <p>number of cards: <span id="p2num"></span></p>
                 <!-- <button id="p2play">play a card</button> -->
             </div>
 
@@ -136,29 +138,35 @@
             // }
 
             // end of game
-            const winner = getWinner();
-            msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
-            start.innerHTML = "Play Again?";
+            // const winner = getWinner();
+            // msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
+            // start.innerHTML = "Play Again?";
         });
 
         function fillAndShuffle(p1, p2){
             const array = [];
+            const SIZE = 52;
             // fill with 52 cards
-            for (let i = 0; i < 52; i++) {
+            for (let i = 0; i < SIZE; i++) {
                 array[i] = i+1;
             }
             // 52 random swaps
-            for (let i = 0; i < 52; i++) {
-                const rand = Math.ceil(Math.random()*52);
+            for (let i = 0; i < SIZE; i++) {
+                const rand = Math.ceil(Math.random()*SIZE);
                 const temp = array[i];
                 array[i] = array[rand];
                 array[rand] = temp;
             }
             // partition to players
-            for (let i=0; i<26; i++) {
+            for (let i=0; i<SIZE/2; i++) {
                 p1[i] = array[i];
-                p2[i] = array[i+26];
+                p2[i] = array[i+SIZE/2];
             }
+            game.player1.numCards = SIZE/2;
+            game.player2.numCards = SIZE/2;
+
+            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
+            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
         }
 
         function isGameOver() {
@@ -168,9 +176,55 @@
             return game.player1.cardArray.length == 0 ? 1 : 2;
         }
 
-        // function evaluate() {
-        //     //if (game)
-        // }
+        function evaluate() {
+            const card1val = cardNumToRank(game.pile1[game.pile1.length-1]);
+            const card2val = cardNumToRank(game.pile2[game.pile2.length-1]);
+            
+            console.log("p1 " + card1val);
+            console.log("p2 " + card2val);
+
+            if (card1val < card2val) {
+                for (let i = 0; i < game.pile1.length; i++) {
+                    game.player2.cardArray.unshift(game.pile1.pop());
+                    game.player2.numCards++;
+                }
+                for (let i = 0; i < game.pile2.length; i++) {
+                    game.player2.cardArray.unshift(game.pile2.pop());
+                    game.player2.numCards++;
+                }
+                console.log("to p2");
+            }
+            else if (card1val > card2val) {
+                for (let i = 0; i < game.pile1.length; i++) {
+                    game.player1.cardArray.unshift(game.pile1.pop());
+                    game.player1.numCards++;
+                }
+                for (let i = 0; i < game.pile2.length; i++) {
+                    game.player1.cardArray.unshift(game.pile2.pop());
+                    game.player1.numCards++;
+                }
+                console.log("to p1");
+            }
+            else {
+                console.log("equal");
+                setTimeout(function(){
+                    if (!isGameOver()){
+                        playCard(game.player1);
+                        playCard(game.player2);
+                    }
+                    else {
+                        const winner = getWinner();
+                        msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
+                        start.innerHTML = "Play Again?";
+                    }
+                } ,1000);
+                setTimeout(function(){
+                    nextRound();
+                } ,1000);
+            }
+            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
+            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
+        }
 
 
         function playCard(player) {
@@ -187,11 +241,13 @@
                 console.log("1");
             }
             else {
-                if (topCard < 10) {topCard = "0" + topCard;}
                 game.pile2.push(topCard);
+                if (topCard < 10) {topCard = "0" + topCard;}
                 p2Card.src = `images/cards-${topCard}.svg`;
                 console.log("1");
             }
+            player.numCards--;
+
         }
 
         // p1play.addEventListener('click', function(){
@@ -202,12 +258,32 @@
         // });
         
         document.getElementById("next").addEventListener('click', function(){
-            playCard(game.player1);
-            playCard(game.player2);
-            // evaluate cards and display message
-            evaluate();
+            nextRound();
+
 
         });
+
+        function nextRound() {
+            if (!isGameOver()){
+                playCard(game.player1);
+                playCard(game.player2);
+                // evaluate cards and display message
+                evaluate();
+            }
+            else {
+                const winner = getWinner();
+                msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
+                start.innerHTML = "Play Again?";
+            }
+        }
+
+
+        function cardNumToRank(num) {
+            while (num > 13) {
+                num -= 13;
+            }
+            return num;
+        }
 
 
 
