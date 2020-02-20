@@ -25,9 +25,51 @@ article:first-of-type p {
 
 #game {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: auto;
+}
+#start, #next {
+    flex: 100%;
+}
+#game div {
+    flex: 1;
+    text-align: center;
+}
+#game #playedcardsarea {
+    flex: 2;
 }
 
-div {
-    text-align: center;
+
+#playedcardsarea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#playedcardsarea div {
+    flex: 1;
+    position: relative;
+}
+#playedcardsarea #war {
+    flex: 100%;
+    margin-top: 50px;
+    position: relative;
+}
+
+#p1deckarea, #p2deckarea {
+    position: relative;
+}
+.transition {
+    position: relative;
+    /* left: 0px; */
+    transition: all 0.5s;
+}
+
+
+.hide {
+    display: none;
+}
+.show {
+    display: initial;
 }

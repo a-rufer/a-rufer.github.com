@@ -20,29 +20,29 @@
             <p>You win by having all of the cards.</p>
         </article>
 
-        <button id="start">Start the Game</button>
-        <button id="next">next round</button>
-
         <article id="game">
 
-            <div id="p1deck">
+            <button id="start">Start the Game</button>
+            <button id="next" class="hide">next round</button>
+
+            <div id="p1deckarea">
                 <img src="images/cardback.svg" width="225" height="300">
                 <p>player 1's deck</p>
                 <p>number of cards: <span id="p1num"></span></p>
-                <!-- <button id="p1play">play a card</button> -->
+                <button id="p1play" class="hide">play a card</button>
             </div>
 
-            <div id="warcards">
-                <img id="p1" src="images/blankspace.svg" width="225" height="300">
-                <img id="war" src="images/blankspace.svg" width="225" height="300">
+            <div id="playedcardsarea">
+                <img id="p1" class="transition" src="images/blankspace.svg" width="225" height="300">
                 <img id="p2" src="images/blankspace.svg" width="225" height="300">
+                <img id="war" src="images/blankspace.svg" width="225" height="300">
             </div>
 
-            <div id="p2deck">
+            <div id="p2deckarea">
                 <img src="images/cardback.svg" width="225" height="300">
                 <p>player 2's deck</p>
                 <p>number of cards: <span id="p2num"></span></p>
-                <!-- <button id="p2play">play a card</button> -->
+                <button id="p2play" class="hide">play a card</button>
             </div>
 
         </article>
@@ -60,14 +60,16 @@
 
         // areas
         var gameArea = document.getElementById("game");
-        var p1deck = document.getElementById("p1deck");
-        var p2deck = document.getElementById("p2deck");
+        var p1deckArea = document.getElementById("p1deckarea");
+        var p2deckArea = document.getElementById("p2deckarea");
+        var playedcardsArea = document.getElementById("playedcardsarea");
         var msgArea = document.getElementById("message");
 
         // buttons
         var p1play = document.getElementById("p1play");
         var p2play = document.getElementById("p2play");
         var start = document.getElementById("start");
+        var next = document.getElementById("next");
 
         // images
         var p1Card = document.getElementById("p1");
@@ -78,10 +80,12 @@
         var game = {
             player1: {
                 numCards: 0,
+                numCardsSpan: document.getElementById("p1num"),
                 cardArray: [],
             },
             player2: {
                 numCards: 0,
+                numCardsSpan: document.getElementById("p2num"),
                 cardArray: [],
             },
             pile1: [],
@@ -91,56 +95,22 @@
 
         // start the game
         start.addEventListener("click", function(){
-
+            // clear message area
             msgArea.innerHTML = "";
-            console.log("1");
+            // deal cards
             fillAndShuffle(game.player1.cardArray, game.player2.cardArray);
-            console.log(game.player1.cardArray);
-            console.log(game.player2.cardArray);
+            // console.log(game.player1.cardArray);
+            // console.log(game.player2.cardArray);
+            // set up buttons
             start.innerHTML = "Restart Game";
-            p1deck.innerHTML += '<button id="p1play">play a card</button>';
-            p2deck.innerHTML += '<button id="p2play">play a card</button>';
-
+            p1play.setAttribute("class", "show");
+            p2play.setAttribute("class", "show");
+            next.setAttribute("class", "show");
+            // reset played card display
+            p1Card.src = `images/blankspace.svg`;
+            p2Card.src = `images/blankspace.svg`;
             
 
-            // while (false && !isGameOver()) {
-            //     console.log("2");
-            //     // wait for both players to play a card
-            //     let p1played = false;
-            //     let p2played = false;
-            //     while (false && !(p1played && p2played)) {
-
-            //         p1play.addEventListener('click', function(){
-            //             if (!p1played) {
-            //                 p1played = true;
-            //                 console.log(p1played);
-            //                 //playCard(game.player1);
-            //             }
-            //         });
-            //         p2play.addEventListener('click', function(){
-            //             if (!p2played) {
-            //                 p2played = true;
-            //                 console.log(p2played);
-            //                 //playCard(game.player2);
-            //             }
-            //         });
-            //         console.log("3");
-                    
-            //     }
-            //     p1played = false;
-            //     p2played = false;
-            //     console.log("4");
-            //     // evaluate cards and display message
-            //     evaluate();
-
-            //     // loop to next round
-
-            // }
-
-            // end of game
-            // const winner = getWinner();
-            // msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
-            // start.innerHTML = "Play Again?";
         });
 
         function fillAndShuffle(p1, p2){
@@ -165,8 +135,8 @@
             game.player1.numCards = SIZE/2;
             game.player2.numCards = SIZE/2;
 
-            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
-            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
+            game.player1.numCardsSpan.innerHTML = `${game.player1.numCards}`;
+            game.player2.numCardsSpan.innerHTML = `${game.player2.numCards}`;
         }
 
         function isGameOver() {
@@ -205,10 +175,13 @@
                 }
                 console.log("to p1");
             }
+            // war scenario
             else {
                 console.log("equal");
                 setTimeout(function(){
                     if (!isGameOver()){
+                        // moveCardP1War();
+                        // moveCardP2War();
                         playCard(game.player1);
                         playCard(game.player2);
                     }
@@ -220,12 +193,61 @@
                 } ,1000);
                 setTimeout(function(){
                     nextRound();
-                } ,1000);
+                }, 1000);
             }
-            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
-            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
+            game.player1.numCardsSpan.innerHTML = `${game.player1.numCards}`;
+            game.player2.numCardsSpan.innerHTML = `${game.player2.numCards}`;
         }
 
+
+        function moveCardP1() {
+            p1deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis1" class="transition" width="225" height="300">';
+            document.getElementById("animatethis1").style.transition = "all 0.5s";
+            document.getElementById("animatethis1").style.zIndex = "1";
+            document.getElementById("animatethis1").style.left = "0px";
+            document.getElementById("animatethis1").style.top = "-360px";
+            console.log(document.getElementById("animatethis1").style.transition);
+            document.getElementById("animatethis1").style.left = "250px";
+            setTimeout(function(){
+                p1deckArea.removeChild(document.getElementById("animatethis1"));
+            }, 500);
+        }
+        function moveCardP2() {
+            p2deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis2" class="transition" width="225" height="300">';
+            document.getElementById("animatethis2").style.transition = "all 0.5s";
+            document.getElementById("animatethis2").style.zIndex = "1";
+            document.getElementById("animatethis2").style.left = "0px";
+            document.getElementById("animatethis2").style.top = "-360px";
+            console.log(document.getElementById("animatethis2").style.transition);
+            document.getElementById("animatethis2").style.left = "-250px";
+            setTimeout(function(){
+                p2deckArea.removeChild(document.getElementById("animatethis2"));
+            }, 500);
+        }
+        // function moveCardP1War() {
+        //     playedcardsArea.innerHTML += '<img src="images/cardback.svg" id="animatethis11" class="transition" width="225" height="300">';
+        //     document.getElementById("animatethis11").style.zIndex = "1";
+        //     document.getElementById("animatethis11").style.left = "0px";
+        //     document.getElementById("animatethis11").style.top = "-360px";
+        //     console.log(document.getElementById("animatethis11").style.transition);
+        //     document.getElementById("animatethis11").style.left = "-250px";
+        //     document.getElementById("animatethis11").style.top = "0px";
+        //     setTimeout(function(){
+        //         playedcardsArea.removeChild(document.getElementById("animatethis11"));
+        //     }, 500);
+        // }
+        // function moveCardP2War() {
+        //     playedcardsArea.innerHTML += '<img src="images/cardback.svg" id="animatethis22" class="transition" width="225" height="300">';
+        //     document.getElementById("animatethis22").style.zIndex = "1";
+        //     document.getElementById("animatethis22").style.left = "0px";
+        //     document.getElementById("animatethis22").style.top = "-360px";
+        //     console.log(document.getElementById("animatethis22").style.transition);
+        //     document.getElementById("animatethis22").style.left = "-250px";
+        //     document.getElementById("animatethis22").style.top = "0px";
+        //     setTimeout(function(){
+        //         playedcardsArea.removeChild(document.getElementById("animatethis22"));
+        //     }, 500);
+        // }
 
         function playCard(player) {
             
@@ -238,33 +260,24 @@
                 if (topCard < 10) {topCard = `0${topCard}`;}
                 console.log(topCard);
                 p1Card.src = `images/cards-${topCard}.svg`;
-                console.log("1");
             }
             else {
                 game.pile2.push(topCard);
                 if (topCard < 10) {topCard = "0" + topCard;}
                 p2Card.src = `images/cards-${topCard}.svg`;
-                console.log("1");
             }
             player.numCards--;
 
         }
-
-        // p1play.addEventListener('click', function(){
-        //     playCard(game.player1);
-        // });
-        // p2play.addEventListener('click', function(){
-        //     playCard(game.player2);
-        // });
         
-        document.getElementById("next").addEventListener('click', function(){
+        next.addEventListener('click', function(){
             nextRound();
-
-
         });
 
         function nextRound() {
             if (!isGameOver()){
+                moveCardP1();
+                moveCardP2();
                 playCard(game.player1);
                 playCard(game.player2);
                 // evaluate cards and display message
