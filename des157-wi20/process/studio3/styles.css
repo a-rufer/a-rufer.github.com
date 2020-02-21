@@ -7,6 +7,12 @@
 body {
     margin: auto;
     margin: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+    
+    font-size: 20px;;
 }
 
 header h1 {
@@ -30,8 +36,9 @@ article:first-of-type p {
     max-width: 1000px;
     margin: auto;
 }
-#start, #next {
+#start, #next, #message {
     flex: 100%;
+    text-align: center;
 }
 #game div {
     flex: 1;
@@ -57,13 +64,16 @@ article:first-of-type p {
     position: relative;
 }
 
-#p1deckarea, #p2deckarea {
+#p1deckarea, #p2deckarea, #playedcardsarea {
     position: relative;
 }
 .transition {
     position: relative;
     /* left: 0px; */
     transition: all 0.5s;
+    z-index: 1;
+    left: 0;
+    top: -369px;
 }
 
 
@@ -72,4 +82,10 @@ article:first-of-type p {
 }
 .show {
     display: initial;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 100px;
 }

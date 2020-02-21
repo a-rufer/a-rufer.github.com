@@ -15,6 +15,7 @@
 
     <main>
         <article>
+            <a id="collapse">collapse instructions</a>
             <h2>Instructions</h2>
             <p>Each player turns over the top card of their deck. The player with the higher ranked card takes both and puts them their deck. If the cards have the same rank, it is called "war". Each player puts another card facedown and another faceup, and play based on the new cards, repeating until one card is a higher rank, and then the player with the higher ranked card takes all of the accumulated cards from the center.</p>
             <p>You win by having all of the cards.</p>
@@ -24,6 +25,7 @@
 
             <button id="start">Start the Game</button>
             <button id="next" class="hide">next round</button>
+            <article id="message"></article>
 
             <div id="p1deckarea">
                 <img src="images/cardback.svg" width="225" height="300">
@@ -33,7 +35,7 @@
             </div>
 
             <div id="playedcardsarea">
-                <img id="p1" class="transition" src="images/blankspace.svg" width="225" height="300">
+                <img id="p1" src="images/blankspace.svg" width="225" height="300">
                 <img id="p2" src="images/blankspace.svg" width="225" height="300">
                 <img id="war" src="images/blankspace.svg" width="225" height="300">
             </div>
@@ -47,7 +49,7 @@
 
         </article>
 
-        <article id="message"></article>
+        
 
     </main>
 
@@ -97,8 +99,9 @@
         start.addEventListener("click", function(){
             // clear message area
             msgArea.innerHTML = "";
+            
             // deal cards
-            fillAndShuffle(game.player1.cardArray, game.player2.cardArray);
+            fillAndShuffle();
             // console.log(game.player1.cardArray);
             // console.log(game.player2.cardArray);
             // set up buttons
@@ -106,6 +109,7 @@
             p1play.setAttribute("class", "show");
             p2play.setAttribute("class", "show");
             next.setAttribute("class", "show");
+            next.disabled = false;
             // reset played card display
             p1Card.src = `images/blankspace.svg`;
             p2Card.src = `images/blankspace.svg`;
@@ -113,9 +117,9 @@
 
         });
 
-        function fillAndShuffle(p1, p2){
+        function fillAndShuffle(){
             const array = [];
-            const SIZE = 52;
+            const SIZE = 10;
             // fill with 52 cards
             for (let i = 0; i < SIZE; i++) {
                 array[i] = i+1;
@@ -129,24 +133,27 @@
             }
             // partition to players
             for (let i=0; i<SIZE/2; i++) {
-                p1[i] = array[i];
-                p2[i] = array[i+SIZE/2];
+                game.player1.cardArray[i] = array[i];
+                game.player2.cardArray[i] = array[i+SIZE/2];
             }
             game.player1.numCards = SIZE/2;
             game.player2.numCards = SIZE/2;
 
-            game.player1.numCardsSpan.innerHTML = `${game.player1.numCards}`;
-            game.player2.numCardsSpan.innerHTML = `${game.player2.numCards}`;
+            // game.player1.numCardsSpan.innerHTML = `${game.player1.numCards}`;
+            // game.player2.numCardsSpan.innerHTML = `${game.player2.numCards}`;
+            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
+            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
         }
 
         function isGameOver() {
             return game.player1.cardArray.length == 0 || game.player2.cardArray.length == 0;
         }
         function getWinner() {
-            return game.player1.cardArray.length == 0 ? 1 : 2;
+            return game.player1.cardArray.length == 0 ? 2 : 1;
         }
 
         function evaluate() {
+            msgArea.innerHTML = "";
             const card1val = cardNumToRank(game.pile1[game.pile1.length-1]);
             const card2val = cardNumToRank(game.pile2[game.pile2.length-1]);
             
@@ -154,6 +161,7 @@
             console.log("p2 " + card2val);
 
             if (card1val < card2val) {
+                msgArea.innerHTML += "<p>player two wins this round!</p>";
                 for (let i = 0; i < game.pile1.length; i++) {
                     game.player2.cardArray.unshift(game.pile1.pop());
                     game.player2.numCards++;
@@ -165,6 +173,7 @@
                 console.log("to p2");
             }
             else if (card1val > card2val) {
+                msgArea.innerHTML += "<p>player one wins this round!</p>";
                 for (let i = 0; i < game.pile1.length; i++) {
                     game.player1.cardArray.unshift(game.pile1.pop());
                     game.player1.numCards++;
@@ -177,37 +186,38 @@
             }
             // war scenario
             else {
+                msgArea.innerHTML += "<p>THIS MEANS WAR!</p>"
                 console.log("equal");
                 setTimeout(function(){
-                    if (!isGameOver()){
-                        // moveCardP1War();
-                        // moveCardP2War();
-                        playCard(game.player1);
-                        playCard(game.player2);
-                    }
-                    else {
-                        const winner = getWinner();
-                        msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
-                        start.innerHTML = "Play Again?";
-                    }
+                    moveCardP1War();
+                    moveCardP2War();
+                    playCardNoShow(game.player1);
+                    playCardNoShow(game.player2);
+
+                    // play faceup cards
+                    setTimeout(function(){
+                        moveCardP1();
+                        moveCardP2();
+                        playCardAndShow(game.player1);
+                        playCardAndShow(game.player2);
+                    }, 500);
+                    
+                    evaluate();
+                
                 } ,1000);
-                setTimeout(function(){
-                    nextRound();
-                }, 1000);
+                
             }
             game.player1.numCardsSpan.innerHTML = `${game.player1.numCards}`;
             game.player2.numCardsSpan.innerHTML = `${game.player2.numCards}`;
+            console.log(game.player1.numCards);
+            console.log(game.player2.numCards);
+
         }
 
 
         function moveCardP1() {
             p1deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis1" class="transition" width="225" height="300">';
-            document.getElementById("animatethis1").style.transition = "all 0.5s";
-            document.getElementById("animatethis1").style.zIndex = "1";
-            document.getElementById("animatethis1").style.left = "0px";
-            document.getElementById("animatethis1").style.top = "-360px";
-            console.log(document.getElementById("animatethis1").style.transition);
-            document.getElementById("animatethis1").style.left = "250px";
+            document.getElementById("animatethis1").style.left = "238px";
             setTimeout(function(){
                 p1deckArea.removeChild(document.getElementById("animatethis1"));
             }, 500);
@@ -215,41 +225,29 @@
         function moveCardP2() {
             p2deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis2" class="transition" width="225" height="300">';
             document.getElementById("animatethis2").style.transition = "all 0.5s";
-            document.getElementById("animatethis2").style.zIndex = "1";
-            document.getElementById("animatethis2").style.left = "0px";
-            document.getElementById("animatethis2").style.top = "-360px";
-            console.log(document.getElementById("animatethis2").style.transition);
-            document.getElementById("animatethis2").style.left = "-250px";
+            document.getElementById("animatethis2").style.left = "-238px";
             setTimeout(function(){
                 p2deckArea.removeChild(document.getElementById("animatethis2"));
             }, 500);
         }
-        // function moveCardP1War() {
-        //     playedcardsArea.innerHTML += '<img src="images/cardback.svg" id="animatethis11" class="transition" width="225" height="300">';
-        //     document.getElementById("animatethis11").style.zIndex = "1";
-        //     document.getElementById("animatethis11").style.left = "0px";
-        //     document.getElementById("animatethis11").style.top = "-360px";
-        //     console.log(document.getElementById("animatethis11").style.transition);
-        //     document.getElementById("animatethis11").style.left = "-250px";
-        //     document.getElementById("animatethis11").style.top = "0px";
-        //     setTimeout(function(){
-        //         playedcardsArea.removeChild(document.getElementById("animatethis11"));
-        //     }, 500);
-        // }
-        // function moveCardP2War() {
-        //     playedcardsArea.innerHTML += '<img src="images/cardback.svg" id="animatethis22" class="transition" width="225" height="300">';
-        //     document.getElementById("animatethis22").style.zIndex = "1";
-        //     document.getElementById("animatethis22").style.left = "0px";
-        //     document.getElementById("animatethis22").style.top = "-360px";
-        //     console.log(document.getElementById("animatethis22").style.transition);
-        //     document.getElementById("animatethis22").style.left = "-250px";
-        //     document.getElementById("animatethis22").style.top = "0px";
-        //     setTimeout(function(){
-        //         playedcardsArea.removeChild(document.getElementById("animatethis22"));
-        //     }, 500);
-        // }
+        function moveCardP1War() {
+            p1deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis11" class="transition" width="225" height="300">';
+            document.getElementById("animatethis11").style.top = "-8px";
+            document.getElementById("animatethis11").style.left = "375px";
+            setTimeout(function(){
+                p1deckArea.removeChild(document.getElementById("animatethis11"));
+            }, 500);
+        }
+        function moveCardP2War() {
+            p2deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis22" class="transition" width="225" height="300">';
+            document.getElementById("animatethis22").style.top = "-8px";
+            document.getElementById("animatethis22").style.left = "-375px";
+            setTimeout(function(){
+                p2deckArea.removeChild(document.getElementById("animatethis22"));
+            }, 500);
+        }
 
-        function playCard(player) {
+        function playCardAndShow(player) {
             
             // console.log(player.cardArray);
             let topCard = player.cardArray.pop();
@@ -263,11 +261,23 @@
             }
             else {
                 game.pile2.push(topCard);
-                if (topCard < 10) {topCard = "0" + topCard;}
+                if (topCard < 10) {topCard = `0${topCard}`;}
                 p2Card.src = `images/cards-${topCard}.svg`;
             }
             player.numCards--;
+        }
 
+        function playCardNoShow(player) {
+
+            let topCard = player.cardArray.pop();
+
+            if (player == game.player1) {
+                game.pile1.push(topCard);
+            }
+            else {
+                game.pile2.push(topCard);
+            }
+            player.numCards--;
         }
         
         next.addEventListener('click', function(){
@@ -275,19 +285,26 @@
         });
 
         function nextRound() {
+            next.disabled = true;
             if (!isGameOver()){
                 moveCardP1();
                 moveCardP2();
-                playCard(game.player1);
-                playCard(game.player2);
-                // evaluate cards and display message
+                playCardAndShow(game.player1);
+                playCardAndShow(game.player2);
+
                 evaluate();
+                setTimeout(function(){
+                    next.disabled = false;
+                }, 500);
             }
             else {
                 const winner = getWinner();
                 msgArea.innerHTML = `<p>Player ${winner} won!</p>`;
                 start.innerHTML = "Play Again?";
             }
+
+            document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
+            document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
         }
 
 
@@ -298,6 +315,12 @@
             return num;
         }
 
+        document.getElementById("collapse").addEventListener('click', function(){
+            const article = document.querySelector("article");
+            for (let i = 1; i < article.children.length; i++) {
+                article.children[i].setAttribute("class", "hide");
+            }
+        });
 
 
 
