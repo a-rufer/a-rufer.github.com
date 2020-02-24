@@ -7,12 +7,55 @@
 body {
     margin: auto;
     margin: 50px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(31, 20, 20);
+    color: white;
 }
 
+main {
+    max-width: 1000px;
+    margin: auto;
+}
+
+main>article:first-of-type {
+    border: 3px solid rgb(121, 210, 216);
+    padding: 30px;
+}
+h1 {
+    font-size: 40px;
+}
+h2 {
+    margin-top: 20px;
+}
 p {
-    
-    font-size: 20px;;
+    font-size: 20px;
+    line-height: 1.5em;
+}
+article div p {
+    font-size: 18px;
+}
+article div p span {
+    color: red;
+}
+
+button {
+    color: rgb(43, 29, 29);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    background-color: rgb(121, 210, 216);
+    border-radius: 20px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+button:hover {
+    background-color: rgb(171, 235, 240);
+}
+
+#message p {
+    display: inline-block;
+    border-radius: 20px;
 }
 
 header h1 {
@@ -27,6 +70,10 @@ article:first-of-type {
 }
 article:first-of-type p {
     line-height: 1.8em;
+}
+
+#p1, #p2 {
+    background-color: white;
 }
 
 #game {
@@ -67,13 +114,13 @@ article:first-of-type p {
 #p1deckarea, #p2deckarea, #playedcardsarea {
     position: relative;
 }
-.transition {
+.trans {
     position: relative;
     /* left: 0px; */
     transition: all 0.5s;
     z-index: 1;
-    left: 0;
-    top: -369px;
+    left: 0px;
+    top: -358px;
 }
 
 
@@ -88,4 +135,11 @@ article:first-of-type p {
 footer {
     text-align: center;
     margin-top: 100px;
+    color: white;
+}
+a {
+    color: rgb(121, 210, 216);
+}
+a:hover {
+    color: rgb(167, 227, 231);
 }
