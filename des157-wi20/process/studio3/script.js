@@ -60,14 +60,14 @@
 
      function fillAndShuffle(){
          const array = [];
-         const SIZE = 52;
+         const SIZE = 10;
          // fill with 52 cards
          for (let i = 0; i < SIZE; i++) {
              array[i] = i+1;
          }
          // 52 random swaps
          for (let i = 0; i < SIZE; i++) {
-             const rand = Math.ceil(Math.random()*SIZE);
+             const rand = Math.floor(Math.random()*SIZE);
              const temp = array[i];
              array[i] = array[rand];
              array[rand] = temp;
@@ -82,6 +82,9 @@
 
          document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
          document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
+
+        //  console.log(game.player1.cardArray);
+        //  console.log(game.player2.cardArray);
      }
 
      function isGameOver() {
@@ -96,8 +99,8 @@
          const card1val = cardNumToRank(game.pile1[game.pile1.length-1]);
          const card2val = cardNumToRank(game.pile2[game.pile2.length-1]);
          
-         console.log("p1 " + card1val);
-         console.log("p2 " + card2val);
+        //  console.log("p1 " + card1val);
+        //  console.log("p2 " + card2val);
 
          if (card1val < card2val) {
              msgArea.innerHTML += "<p>player two wins this round!</p>";
@@ -109,7 +112,7 @@
                  game.player2.cardArray.unshift(game.pile2.pop());
                  game.player2.numCards++;
              }
-             console.log("to p2");
+            //  console.log("to p2");
          }
          else if (card1val > card2val) {
              msgArea.innerHTML += "<p>player one wins this round!</p>";
@@ -121,12 +124,12 @@
                  game.player1.cardArray.unshift(game.pile2.pop());
                  game.player1.numCards++;
              }
-             console.log("to p1");
+            //  console.log("to p1");
          }
          // war scenario
          else {
              msgArea.innerHTML += "<p>THIS MEANS WAR!</p>"
-             console.log("equal");
+            //  console.log("equal");
              setTimeout(function(){
                  moveCardP1War();
                  moveCardP2War();
@@ -147,10 +150,10 @@
              }, 1000);
              
          }
-         document.getElementById("p1num").innerHTML = `${game.player1.numCards}`;
-         document.getElementById("p2num").innerHTML = `${game.player2.numCards}`;
-         console.log(game.player1.numCards);
-         console.log(game.player2.numCards);
+         document.getElementById("p1num").innerHTML = `${game.player1.cardArray.length}`;
+         document.getElementById("p2num").innerHTML = `${game.player2.cardArray.length}`;
+        //  console.log(game.player1.numCards);
+        //  console.log(game.player2.numCards);
 
         setTimeout(function(){
             if (isGameOver()) {
@@ -167,6 +170,7 @@
 
      function moveCardP1() {
          p1deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis1" class="trans" width="225" height="300">';
+         document.getElementById("animatethis1").offsetHeight;
          document.getElementById("animatethis1").style.left = "237px";
          setTimeout(function(){
              p1deckArea.removeChild(document.getElementById("animatethis1"));
@@ -174,9 +178,7 @@
      }
      function moveCardP2() {
          p2deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis2" class="trans" width="225" height="300">';
-         document.getElementById("animatethis2").style.transition = "none";
-         document.getElementById("animatethis2").style.left = "0px";
-         document.getElementById("animatethis2").style.transition = "all 0.5s";
+         document.getElementById("animatethis2").offsetHeight;
          document.getElementById("animatethis2").style.left = "-238px";
          setTimeout(function(){
              p2deckArea.removeChild(document.getElementById("animatethis2"));
@@ -184,6 +186,7 @@
      }
      function moveCardP1War() {
          p1deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis11" class="trans" width="225" height="300">';
+         document.getElementById("animatethis11").offsetHeight;
          document.getElementById("animatethis11").style.top = "-8px";
          document.getElementById("animatethis11").style.left = "375px";
          setTimeout(function(){
@@ -192,6 +195,7 @@
      }
      function moveCardP2War() {
          p2deckArea.innerHTML += '<img src="images/cardback.svg" id="animatethis22" class="trans" width="225" height="300">';
+         document.getElementById("animatethis22").offsetHeight;
          document.getElementById("animatethis22").style.top = "-8px";
          document.getElementById("animatethis22").style.left = "-375px";
          setTimeout(function(){
@@ -201,19 +205,20 @@
 
      function playCardAndShow(player) {
          
-         // console.log(player.cardArray);
+        //  console.log(player.cardArray);
          let topCard = player.cardArray.pop();
-         // console.log(topCard);
+        //  console.log(topCard);
 
          if (player == game.player1) {
              game.pile1.push(topCard);
              if (topCard < 10) {topCard = `0${topCard}`;}
-             console.log(topCard);
+            //  console.log(topCard, `images/cards-${topCard}.svg`);
              p1Card.src = `images/cards-${topCard}.svg`;
          }
          else {
              game.pile2.push(topCard);
              if (topCard < 10) {topCard = `0${topCard}`;}
+            //  console.log(topCard, `images/cards-${topCard}.svg`);
              p2Card.src = `images/cards-${topCard}.svg`;
          }
          player.numCards--;
@@ -241,12 +246,18 @@
          if (!isGameOver()){
              moveCardP1();
              moveCardP2();
-             playCardAndShow(game.player1);
-             playCardAndShow(game.player2);
+             
+            setTimeout(function(){
+                playCardAndShow(game.player1);
+                playCardAndShow(game.player2);
+            }, 500);
 
-             evaluate();
+             
              setTimeout(function(){
+                evaluate();
                  next.disabled = false;
+                 console.log(game.player1.cardArray);
+                 console.log(game.player2.cardArray);
              }, 1000);
          }
 

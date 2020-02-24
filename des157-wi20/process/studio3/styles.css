@@ -53,8 +53,7 @@ button:hover {
     background-color: rgb(171, 235, 240);
 }
 
-#message p {
-    display: inline-block;
+#message {
     border-radius: 20px;
 }
 
