@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* typography */
+body {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    color: white;
+}
+
+
+/* setting up structure of page and elements */
+
+/* header */
+header {
+    padding: 60px 40px;
+    background-color: green;
+    border-bottom: 5px lawngreen solid;
+    margin-bottom: 40px;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+header nav ul li a {
+    padding: 10px;
+    text-decoration: none;
+    color: green;
+    background-color: rgb(159, 219, 91);
+    border-radius: 20px;
+    margin-right: 20px;
+}
+header nav ul li a:hover {
+    background-color: lightseagreen;
+}
+
+/* main content */
+
+main {
+    display: flex;
+    justify-content: space-around;
+}
+
+main article {
+    margin: 0px 40px;
+}
+
+main #glist {
+    flex: 2;
+}
+main #glist ol li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0px;
+    border-bottom: solid lightgray 1px;
+}
+
+/* comparison box */
+main #compare {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+}
+main #compare h2 {
+    flex: 100%;
+}
+
+
+/* button styling */
+button {
+    border-radius: 20px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
