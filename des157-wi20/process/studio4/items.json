@@ -25,7 +25,7 @@
         {
             "name": "apple",
             "seasonality": [1,1,1,1,1,1,1,1,1,1,1,1],
-            "water": 10,
+            "water": 85,
             "nutrition": {
                 "cal": 250,
                 "iron": 0,

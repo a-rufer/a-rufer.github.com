@@ -41,11 +41,36 @@
             <h2>compare items here!</h2>
 
             <section>
+                <select id="items1">
+                    <option value="na">select one</option>
+                </select>
+                <select id="items2">
+                    <option value="na">select one</option>
+                </select>
+            </section>
+            
+            <section id="seasonality">
+                <h3>seasonality</h3>
+                <div id="s1"></div>
+                <div id="s2"></div>
+            </section>
+
+            <section>
+                <h3>water footprint</h3>
+                <canvas id="w" class="hidden"></canvas>
+            </section>
+
+            <section>
+                <h3>nutrition</h3>
+                <canvas id="n1"></canvas>
+                <canvas id="n2"></canvas>
+            </section>
+
+
+            <!-- <section id="compare1">
 
                 <select id="items1">
-                    <option value="item1">item1</option>
-                    <option value="item2">item2</option>
-                    <option value="item3">item3</option>
+                    <option value="na">select one</option>
                 </select>
 
                 <section>
@@ -65,12 +90,10 @@
 
             </section>
 
-            <section>
+            <section id="compare2">
 
                 <select id="items2">
-                    <option value="item1">item1</option>
-                    <option value="item2">item2</option>
-                    <option value="item3">item3</option>
+                    <option value="na">select one</option>
                 </select>
 
                 <section>
@@ -86,7 +109,7 @@
                 <section>
                     <h3>nutrition information</h3>
                     <canvas id="n2"></canvas>
-                </section>
+                </section> -->
 
 
             </section>
@@ -109,6 +132,11 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
 
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <!-- my script -->
     <script src="script.js"></script>
     
 </body>
