@@ -3,7 +3,7 @@
         {
             "name": "broccoli",
             "seasonality": [1,1,1,1,1,1,1,1,1,1,1,1],
-            "water": 5,
+            "water": 314.159,
             "nutrition": {
                 "cal": 200,
                 "iron": 2,
@@ -14,7 +14,7 @@
         {
             "name": "eggplant",
             "seasonality": [0,0,0,0,0,1,1,1,1,1,0,0],
-            "water": 6,
+            "water": 399.037,
             "nutrition": {
                 "cal": 100,
                 "iron": 3,
@@ -25,7 +25,7 @@
         {
             "name": "apple",
             "seasonality": [1,1,1,1,1,1,1,1,1,1,1,1],
-            "water": 85,
+            "water": 906.1,
             "nutrition": {
                 "cal": 250,
                 "iron": 0,
@@ -36,7 +36,7 @@
         {
             "name": "raspberry",
             "seasonality": [0,0,0,0,1,1,1,1,1,1,1,0],
-            "water": 5,
+            "water": 455.255,
             "nutrition": {
                 "cal": 20,
                 "iron": 1,

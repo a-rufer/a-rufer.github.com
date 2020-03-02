@@ -23,21 +23,82 @@
     let searchBar = document.getElementById("search");
     const items1 = document.getElementById("items1");
     const items2 = document.getElementById("items2");
-    let compare1; // keeps track of first element being compared
-    let compare2; // keeps track of second element being compared
-    // keep track of current chart 
+    let compare1 = null; // keeps track of first element being compared
+    let compare2 = null; // keeps track of second element being compared
+
+    // current charts 
+
     let currWaterChart = new Chart(document.getElementById("w"), {
         type: 'bar', // type of chart
         data : {
             labels: ["item 1", "item 2"],
             datasets: [{
-                backgroundColor: ['green'],
-                barPercentage: 0.5,
-                barThickness: 'flex',
+                backgroundColor: ['#74BA3B', 'green'],
                 data: [0,0]
             }]
         },
-        options: {}
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        suggestedMax: 9
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: "water consumed (kg/L)"
+                    }
+                }],
+                xAxes: [{
+                    display: true
+                }]
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+    let currNutritionChart = new Chart( document.getElementById("n"), {
+        type: 'horizontalBar',
+        data: {
+            labels: ['calories', 'iron', 'protein', 'fiber'],
+            datasets: [
+                {
+                    // first item
+                    backgroundColor: '#74BA3B',
+                    label: "item 1",
+                    data: [0,0,0,0]
+                },
+                {
+                    // second item
+                    backgroundColor: 'green',
+                    label: "item 2",
+                    data: [0,0,0,0]
+                }
+            ]
+        },
+        options: {
+            scales : {
+                xAxes: [{
+                    ticks: {
+                        suggestedMin: -10,
+                        suggestedMax: 10
+                    },
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            },
+            legend: {
+                labels: {
+                    boxWidth: 15,
+                },
+                fontFamily: 'Arial',
+                align: 'center',
+                text: ['h','e'],
+            }
+        }
     });
 
 
@@ -138,23 +199,31 @@
             const item = snap.val();
             console.log(item);
             // set up variable to track items to compare
-            if (compareNum == 1) { compare1 = item; }
-            else { compare2 = item; }
+            if (compareNum == 1) { 
+                compare1 = item; 
+            } else { 
+                compare2 = item; 
+            }
             // display info
             displaySeasonality(item, document.getElementById(`s${compareNum}`));
-            displayWater(compareNum);
-            displayNutrition(item, document.getElementById(`n${compareNum}`));
+            displayWater();
+            displayNutrition();
         });
     }
 
+    // clears all data for the item indicated by the number
     function clearCompareData(compareNum) {
-        // clear item tracker
-        if (compareNum == 1) { compare1 = null; }
-        else { compare2 = null; }
+        // clear item tracker and chart
+        if (compareNum == 1) { 
+            compare1 = null; 
+        }
+        else { 
+            compare2 = null; 
+        }
         // clear info containers
         document.getElementById(`s${compareNum}`).innerHTML = "";
-        // document.getElementById(`w${compareNum}`).innerHTML = "";
-        // document.getElementById(`n${compareNum}`).innerHTML = "";
+        clearWater(compareNum);
+        clearNutrition(compareNum);
     }
 
     function displaySeasonality(item, container) {
@@ -180,34 +249,115 @@
         }
     }
 
-    function displayWater(compareNum) {
-        var canvas = document.getElementById("w");
-        canvas.setAttribute("class", "unhidden"); // unhide it
+    function displayWater() {
 
-        if (compare1 && compare2) {
+        if (compare1 != null && compare2 != null) {
             console.log(1);
-            currWaterChart.data.datasets.data = [compare1.water, compare2.water];
-            currWaterChart.data.labels = [`${compare1.name} gallons consumed`, `${compare2.name} gallons consumed`];
+            console.log(compare1.water)
+            console.log(compare2.water)
+            currWaterChart.data.datasets[0].data = [compare1.water, compare2.water];
+            currWaterChart.data.labels = [`${compare1.name}`, `${compare2.name}`];
         }
-        else if (compare1) {
+        else if (compare1 != null) {
             console.log(2);
             console.log(compare1.water)
-            // currWaterChart.data.xdatasets.data.unshift(compare1.water);
-            currWaterChart.data.datasets.data = [compare1.water, 0];
-            console.log(currWaterChart.data.datasets.data);
-            currWaterChart.data.labels = [`${compare1.name} gallons consumed`];
+            currWaterChart.data.datasets[0].data = [compare1.water, 0];
+            currWaterChart.data.labels = [`${compare1.name}`, "item 2"];
         }
-        else if (compare2) {
+        else if (compare2 != null) {
             console.log(3);
-            currWaterChart.data.datasets.data = [0, compare2.water];
-            currWaterChart.data.labels = [`${compare2.name} gallons consumed`];
+            console.log(compare2.water)
+            currWaterChart.data.datasets[0].data = [0, compare2.water];
+            currWaterChart.data.labels = ["item 1", `${compare2.name}`];
         }
         
         currWaterChart.update();
     }
 
-    function displayNutrition(item, canvas) {
-        console.log(item);
+    function clearWater(compareNum) {
+        if (compareNum == 1) {
+            if (compare2 != null) {
+                currWaterChart.data.datasets[0].data = [0, compare2.water];
+                currWaterChart.data.labels = [`item 1`, `${compare2.name}`];
+            }
+            else {
+                currWaterChart.data.datasets[0].data = [0, 0];
+                currWaterChart.data.labels = [`item 1`, `item 2`];
+            }
+            compare1 = null;
+        }
+        else if (compareNum == 2) {
+            if (compare1 != null) {
+                currWaterChart.data.datasets[0].data = [compare1.water, 0];
+                currWaterChart.data.labels = [`${compare1.name}`, `item 2`];
+            }
+            else {
+                currWaterChart.data.datasets[0].data = [0, 0];
+                currWaterChart.data.labels = [`item 1`, `item 2`];
+            }
+            compare2 = null;
+        }
+        currWaterChart.update();
+    }
+
+    function displayNutrition() {
+        document.getElementById("n");
+
+        let dataArray1 = currNutritionChart.data.datasets[0].data;
+        let dataArray2 = currNutritionChart.data.datasets[1].data;
+        console.log(dataArray1, dataArray2);
+
+        if (compare1 != null && compare2 != null) {
+
+            dataArray1[0] = -(compare1.nutrition.cal);
+            dataArray1[1] = -(compare1.nutrition.iron);
+            dataArray1[2] = -(compare1.nutrition.protein);
+            dataArray1[3] = -(compare1.nutrition.fiber);
+
+            dataArray2[0] = compare2.nutrition.cal;
+            dataArray2[1] = compare2.nutrition.iron;
+            dataArray2[2] = compare2.nutrition.protein;
+            dataArray2[3] = compare2.nutrition.fiber;
+
+            currNutritionChart.data.datasets[0].label = compare1.name;
+            currNutritionChart.data.datasets[1].label = compare2.name;
+
+        }
+        else if (compare1 != null) {
+
+            dataArray1[0] = compare1.nutrition.cal;
+            dataArray1[1] = compare1.nutrition.iron;
+            dataArray1[2] = compare1.nutrition.protein;
+            dataArray1[3] = compare1.nutrition.fiber;
+
+            currNutritionChart.data.datasets[0].label = compare1.name;
+        }
+        else if (compare2 != null) {
+            dataArray2[0] = compare2.nutrition.cal;
+            dataArray2[1] = compare2.nutrition.iron;
+            dataArray2[2] = compare2.nutrition.protein;
+            dataArray2[3] = compare2.nutrition.fiber;
+
+            currNutritionChart.data.datasets[1].label = compare2.name;
+        }
+        
+        currNutritionChart.update();
+    }
+
+    function clearNutrition(compareNum) {
+        if (compareNum == 1) {
+            console.log("delete 1");
+            console.log(currNutritionChart.data.datasets[0].data);
+            currNutritionChart.data.datasets[0].data = [0,0,0,0];
+            compare1 = null;
+            console.log(currNutritionChart.data.datasets[0].data);
+        }
+        else if (compareNum == 2) {
+            console.log("delete 2");
+            currNutritionChart.data.datasets[1].data = [0,0,0,0];
+            compare2 = null;
+        }
+        currNutritionChart.update();
     }
 
 
