@@ -40,7 +40,6 @@ header nav ul li a {
 }
 header nav ul li a:hover {
     background-color: lightseagreen;
-    box-shadow: 10 10 black ;
 }
 
 /* main content */
@@ -48,9 +47,6 @@ header nav ul li a:hover {
 main article {
     margin: 0px 40px;
     margin-bottom: 20px;
-}
-main article:last-of-type {
-    margin-left: 0px;
 }
 
 #glist, #compare {
@@ -159,7 +155,6 @@ select:first-of-type {
 
 input[type=text] {
     border: none;
-    /* border: solid #74BA3B 1px; */
     margin: 10px 0px;
     margin-right: 20px;
     color: green;
@@ -207,5 +202,8 @@ input[type=text] {
     main {
         display: flex;
         justify-content: space-around;
+    }
+    main article:last-of-type {
+        margin-left: 0px;
     }
 }

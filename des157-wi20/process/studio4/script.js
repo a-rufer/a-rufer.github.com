@@ -16,6 +16,9 @@
     firebase.initializeApp(firebaseConfig);
 
 
+    // water info: https://waterfootprint.org/media/downloads/Report47-WaterFootprintCrops-Vol1.pdf
+
+    
     // variables
     var db = firebase.database();
 
