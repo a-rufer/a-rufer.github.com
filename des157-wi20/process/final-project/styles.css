@@ -1,0 +1,228 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* typography */
+body {
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(68, 44, 44);
+}
+
+h1, h2 {
+    color: white;
+}
+
+/* footer styling  */
+
+footer {
+    padding: 50px;
+    margin-top: 50px;
+    background-color: #0D6719;
+    color: white;
+    font-size: 18px;
+}
+footer a {
+    color: rgb(178, 238, 144);
+    text-decoration: none;
+}
+footer a:hover {
+    color: rgb(178, 238, 144);
+    text-decoration: underline;
+}
+footer p {
+    line-height: 1.8em;
+}
+
+
+/* setting up structure of page and elements */
+
+/* header */
+.sideheader {
+    padding: 10px 40px;
+    background-color: #0D6719;
+    border-bottom: 10px #74BA3B solid;
+    display: flex;
+    align-items: center;
+}
+.sideheader h1 {
+    font-size: 36px;
+}
+
+.sideheader #logo {
+    margin-right: 20px;
+    width: 100px;
+    height: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    background-color: rgba(13, 103, 25, 0.842);
+    padding: 15px 30px;
+    margin-bottom: 30px;
+}
+
+nav ul li a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: rgb(236, 255, 219);
+    /* border-radius: 20px; */
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+nav ul li a:hover {
+    background-color: lightseagreen;
+    background-color: #0D6719;
+}
+
+/* main content */
+
+main article {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+}
+
+#glist, #compare {
+    border: solid 3px #0D6719;
+    border-radius: 20px;
+}
+
+main #glist {
+    flex: 2;
+}
+main #glist h2, 
+main #glist form, 
+main #compare h2 {
+    background-color: #0D6719;
+    padding: 15px;
+}
+main #glist form {
+    padding-top: 0px;
+    color: rgb(178, 238, 144);
+}
+main #glist h2, 
+main #compare h2 {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+main #glist ol li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    border-bottom: solid lightgray 1px;
+}
+
+/* comparison box */
+main #compare {
+    flex: 4;
+    display: flex;
+    flex-wrap: wrap;
+}
+main #compare h2 {
+    flex: 100%;
+    margin-bottom: 20px;
+}
+main #compare section {
+    padding: 10px;
+    flex: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    /* border: red solid 1px; */
+}
+main #compare #seasonality {
+    /* background-color: blue; */
+    display: initial;
+}
+main #compare #seasonality canvas {
+    display: block;
+    width: 100%;
+    height: 20px;
+}
+main #compare section h3 {
+    flex: 100%;
+    align-self: center;
+}
+main #compare canvas {
+    /* border: solid black 1px; */
+    flex: 1;
+}
+main #compare select {
+    flex: 1;
+}
+
+
+/* input styling */
+button, 
+input, 
+select {
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+select:first-of-type {
+    margin-right: 10px;
+}
+
+input[type=text] {
+    border: none;
+    margin: 10px 0px;
+    margin-right: 20px;
+    color: green;
+}
+
+.deleteBtn {
+    background-color: rgb(224, 224, 224);
+    border: none;
+}
+
+/* information styling */
+#seasonality {
+    overflow: hidden;
+}
+#seasonality div {
+    flex: 1;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    margin-top: 10px;
+}
+#seasonality div p {
+    flex: 1;
+    font-size: 18px;
+}
+.dot {
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    max-width: 15px;
+    height: 15px;
+    flex: 1;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+}
+.available {
+    background-color: #74BA3B;
+}
+.notAvailable {
+    background-color: rgb(192, 191, 191);
+}
+
+#water h3 {
+    margin-bottom: 10px;
+}
+
+
+@media only screen and (min-width: 700px) {
+    main {
+        display: flex;
+        justify-content: space-around;
+    }
+    main article:last-of-type {
+        margin-left: 0px;
+    }
+}
