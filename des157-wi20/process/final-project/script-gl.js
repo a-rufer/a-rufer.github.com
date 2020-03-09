@@ -89,7 +89,11 @@
                         suggestedMin: -10,
                         suggestedMax: 10
                     },
-                    stacked: true
+                    stacked: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "per cup"
+                    }
                 }],
                 yAxes: [{
                     stacked: true

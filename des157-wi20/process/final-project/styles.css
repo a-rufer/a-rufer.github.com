@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+main {
+    border: solid black 2px;
+}
+
 /* typography */
 body {
     font-size: 20px;
@@ -48,7 +52,7 @@ header {
     /* display: flex;
     align-items: center; */
 }
-.sideheader {
+.sideheader>div {
     display: flex;
     align-items: center;
 }
@@ -102,7 +106,8 @@ nav ul li a:hover {
 
 /* main content */
 
-main article {
+main article,
+#alternatives article {
     margin: 0px 10px;
     margin-bottom: 20px;
 }
@@ -112,9 +117,6 @@ main article {
     border-radius: 20px;
 }
 
-main #glist {
-    flex: 2;
-}
 main #glist h2, 
 main #glist form, 
 main #compare h2 {
@@ -140,7 +142,6 @@ main #glist ol li {
 
 /* comparison box */
 main #compare {
-    flex: 4;
     display: flex;
     flex-wrap: wrap;
 }
@@ -187,15 +188,17 @@ select {
     border: solid 2px #74BA3B;
 }
 
-select:first-of-type {
-    margin-right: 10px;
+select:first-of-type, input[type='button']{
+    margin-right: 20px;
 }
 
 input[type=text] {
     border: none;
-    margin: 10px 0px;
+    /* margin: 10px 0px; */
+    border: solid 2px #74BA3B;
     margin-right: 20px;
     color: green;
+    flex: 1;
 }
 
 .deleteBtn {
@@ -212,7 +215,7 @@ form p {
 #seasonality {
     overflow: hidden;
 }
-#seasonality div {
+#seasonality>div {
     flex: 1;
     display: flex;
     /* align-items: center; */
@@ -249,15 +252,18 @@ form p {
 
 /******************** HOME PAGE ********************/
 
-#browse {
+#browse, 
+#alternatives {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#browse section {
+#browse section, 
+#alternatives section {
     flex: 100%;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 #browse section input {
@@ -265,50 +271,93 @@ form p {
     border: solid 2px #74BA3B;
 }
 
-#browse article {
+#browse article, 
+#alternatives article {
     flex: 100%;
     margin-bottom: 40px;
-    border: black solid 2px;
-    /* position: relative; */
+    /* border: black solid 2px; */
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.43);
 }
-#browse img {
+#browse img, 
+#alternatives img {
     width: 100%;
     height: auto;
 }
-#browse article p {
+#browse article p,
+#alternatives article p {
     color: white;
     font-size: 28px;
     line-height: 2em;
     background-color: #0D6719;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
     align-items: center;
 }
-#browse button {
+#browse button,
+#alternatives button {
     background-color: #74BA3B;
     border: none;
     color: white;
     font-weight: bolder;
     font-size: 30px;
 }
-#browse button:hover {
+#browse button:hover,
+#alternatives button:hover {
     background-color: rgb(149, 219, 92);
     border: none;
+}
+
+/******************** SINGLE ITEM PAGE ********************/
+
+#singleitem {
+    display: initial;
+    padding: 10px;
+}
+
+#singleitem>img {
+    width: 100%;
+    height: 100%;
+}
+#singleitem h2 {
+    color: rgb(68, 44, 44);
+    margin-bottom: 20px;
+}
+
+#alternatives {
+    justify-content: left;
+}
+
+#alternatives h3 {
+    margin: 40px 0px;
+    flex: 100%;
 }
 
 
 @media only screen and (min-width: 600px) {
     main {
         display: flex;
-        justify-content: space-around;
+        /* justify-content: space-around; */
+        /* justify-content: flex-start; */
         padding: 0px 40px;
+        margin: 0px;
     }
-    main article {
+    main #glist {
         margin-right: 40px;
+        flex: 2;
+        /* width: 40% */
     }
-    main article:last-of-type {
+    main #compare {
         margin-right: 0px;
+        flex: 4;
+        /* width: 60%; */
+    }
+
+    #seasonality div p {
+        font-size: 20px;
     }
 
     header {
@@ -328,26 +377,38 @@ form p {
         /* margin-bottom: 30px; */
     }
 
-    #browse article {
+    #browse article,
+    #alternatives article {
         /* flex: 1; */
-        flex: 40%;
-        max-width: 40%;
+        flex: 45%;
+        max-width: 45%;
     }
-    #browse article:nth-child(2n) {
+    #browse article:nth-child(2n),
+    #alternatives article:nth-child(2n) {
         margin-right: 20px;
+    }
+
+    #singleitem {
+        padding: 0px 40px;
+        border: solid black 2px;
+    }
+    #singleitem #item {
+        display: flex;
     }
 
 }
 
 
 @media only screen and (min-width: 900px) {
-    #browse article {
+    #browse article,
+    #alternatives article {
         /* flex: 1; */
-        flex: 25%;
-        max-width: 25%;
+        flex: 30%;
+        max-width: 30%;
         margin-right: 0px;
     }
-    #browse article:nth-child(3n) {
+    #browse article:nth-child(3n),
+    #alternatives article:nth-child(3n) {
         margin-right: 20px;
     }
 }
@@ -359,23 +420,41 @@ form p {
         justify-content: right;
     }
 
-    #browse, 
+    #browse,
+    #alternatives,
+    main, 
     .mainheader h1, 
+    .sideheader div,
     nav ul, 
-    .mainheader>div {
+    .mainheader>div,
+    footer div {
         max-width: 1024px;
         margin: auto;
     }
     nav ul {
         margin-bottom: 20px;
     }
-    #browse article {
+    #browse article,
+    #alternatives article {
         /* flex: 1; */
         flex: 20%;
-        max-width: 20%;
+        max-width: 25%;
         margin-right: 0px;
     }
-    #browse article:nth-child(4n) {
+    #browse article:nth-child(4n),
+    #alternatives article:nth-child(4n) {
         margin-right: 20px;
     }
+}
+
+
+/************* CLASSES FOR JS **************/
+
+.hidden {
+    display: none;
+}
+
+.collapsable {
+    /* border: blue solid 1px; */
+    transition: all 1s;
 }
