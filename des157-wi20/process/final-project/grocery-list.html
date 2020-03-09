@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
     <title>My Grocery List</title>
@@ -15,7 +17,7 @@
     <header class="sideheader">
 
         <img id="logo" src="images/logo.png" alt="logo">
-        <h1>My Grocery List</h1>
+        <h1>Grocery Guide</h1>
 
     </header>
 
@@ -31,7 +33,7 @@
         <article id="glist">
             <h2>My Grocery List</h2>
             <form id="searchForm" method="POST">
-                <p><input id="search" name="search" type="text" placeholder="search"><input type="submit" value="go"></p>
+                <p><input id="search" name="search" type="text" placeholder="search"><input type="button" value="clear" id="clear"></p>
             </form>
             <ol>
                 
@@ -90,7 +92,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- my script -->
-    <script src="script.js"></script>
+    <script src="script-gl.js"></script>
     
 </body>
 </html>

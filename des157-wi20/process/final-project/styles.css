@@ -6,12 +6,14 @@
 /* typography */
 body {
     font-size: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Karla', Arial, sans-serif;
     color: rgb(68, 44, 44);
 }
 
 h1, h2 {
     color: white;
+    font-family: 'Lato';
+    font-weight: 400;
 }
 
 /* footer styling  */
@@ -39,29 +41,47 @@ footer p {
 /* setting up structure of page and elements */
 
 /* header */
-.sideheader {
+header {
     padding: 10px;
     background-color: #0D6719;
     border-bottom: 10px #74BA3B solid;
+    /* display: flex;
+    align-items: center; */
+}
+.sideheader {
     display: flex;
     align-items: center;
 }
-.sideheader h1 {
-    font-size: 30px;
+.mainheader>div {
+    display: flex;
+    align-items: center;
 }
-
-.sideheader #logo {
+header #logo {
     margin-right: 20px;
     width: 70px;
     height: auto;
 }
+header h1 {
+    font-size: 30px;
+}
+.mainheader p {
+    color: white;
+    font-family: 'Lato';
+    font-weight: 300;
+}
+.mainheader h1 {
+    margin-bottom: 5px;
+}
 
+nav {
+    background-color: rgba(13, 103, 25, 0.842);
+}
 nav ul {
     list-style-type: none;
     display: flex;
-    background-color: rgba(13, 103, 25, 0.842);
+    /* background-color: rgba(13, 103, 25, 0.842); */
     padding: 15px 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 nav ul li a {
@@ -77,6 +97,8 @@ nav ul li a:hover {
     background-color: lightseagreen;
     background-color: #0D6719;
 }
+
+/******************** GROCERY LIST ********************/
 
 /* main content */
 
@@ -161,6 +183,10 @@ select {
     padding: 5px 10px;
 }
 
+select {
+    border: solid 2px #74BA3B;
+}
+
 select:first-of-type {
     margin-right: 10px;
 }
@@ -175,6 +201,11 @@ input[type=text] {
 .deleteBtn {
     background-color: rgb(224, 224, 224);
     border: none;
+}
+
+form p {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* information styling */
@@ -216,31 +247,135 @@ input[type=text] {
 }
 
 
-@media only screen and (min-width: 700px) {
+/******************** HOME PAGE ********************/
+
+#browse {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#browse section {
+    flex: 100%;
+    padding: 10px;
+}
+
+#browse section input {
+    width: 300px;
+    border: solid 2px #74BA3B;
+}
+
+#browse article {
+    flex: 100%;
+    margin-bottom: 40px;
+    border: black solid 2px;
+    /* position: relative; */
+}
+#browse img {
+    width: 100%;
+    height: auto;
+}
+#browse article p {
+    color: white;
+    font-size: 28px;
+    line-height: 2em;
+    background-color: #0D6719;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+#browse button {
+    background-color: #74BA3B;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+#browse button:hover {
+    background-color: rgb(149, 219, 92);
+    border: none;
+}
+
+
+@media only screen and (min-width: 600px) {
     main {
         display: flex;
         justify-content: space-around;
-        padding: 40px;
+        padding: 0px 40px;
+    }
+    main article {
+        margin-right: 40px;
     }
     main article:last-of-type {
-        margin-left: 0px;
+        margin-right: 0px;
     }
 
-    .sideheader {
+    header {
         padding: 20px 40px;
     }
 
-    .sideheader h1 {
+    header h1 {
         font-size: 36px;
     }
     
-    .sideheader #logo {
+    header #logo {
         width: 120px;
     }
     
     nav ul {
         padding: 15px 40px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
 
+    #browse article {
+        /* flex: 1; */
+        flex: 40%;
+        max-width: 40%;
+    }
+    #browse article:nth-child(2n) {
+        margin-right: 20px;
+    }
+
+}
+
+
+@media only screen and (min-width: 900px) {
+    #browse article {
+        /* flex: 1; */
+        flex: 25%;
+        max-width: 25%;
+        margin-right: 0px;
+    }
+    #browse article:nth-child(3n) {
+        margin-right: 20px;
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    
+    .mainheader>div {
+        justify-content: right;
+    }
+
+    #browse, 
+    .mainheader h1, 
+    nav ul, 
+    .mainheader>div {
+        max-width: 1024px;
+        margin: auto;
+    }
+    nav ul {
+        margin-bottom: 20px;
+    }
+    #browse article {
+        /* flex: 1; */
+        flex: 20%;
+        max-width: 20%;
+        margin-right: 0px;
+    }
+    #browse article:nth-child(4n) {
+        margin-right: 20px;
+    }
 }

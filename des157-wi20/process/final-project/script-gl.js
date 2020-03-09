@@ -23,6 +23,7 @@
     // variables
     var db = firebase.database();
 
+    const clearBtn = document.getElementById("clear");
     const gList = document.querySelector("#glist ol");
     let searchBar = document.getElementById("search");
     const items1 = document.getElementById("items1");
@@ -169,6 +170,15 @@
         if (event.target.matches('.deleteBtn') ) {
             const itemID = event.target.getAttribute("id").slice(2);
             removeItem(itemID);
+        }
+    });
+
+    // clear all button
+    clearBtn.addEventListener('click', function(){
+        let items = document.querySelectorAll("#glist ol li");
+        for (let i = 0; i < items.length; i++) { // get the id of each list item and remove it
+            const id = items[i].getAttribute("id"); 
+            removeItem(id);
         }
     });
 
