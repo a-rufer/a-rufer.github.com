@@ -18,7 +18,7 @@
 
     // water info: https://waterfootprint.org/media/downloads/Report47-WaterFootprintCrops-Vol1.pdf
 
-    // GROCERY LIST STUFF 
+    /************************ GROCERY LIST STUFF ************************/
 
     // variables
     var db = firebase.database();

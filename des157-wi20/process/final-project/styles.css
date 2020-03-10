@@ -253,16 +253,19 @@ form p {
 
 /******************** STORY SECTION ********************/
 
-#story > div {
+#story > div > div {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 #story {
-    margin: 10px;
+    background-color: rgb(213, 240, 170);
+    padding: 20px;
 }
 
-
+#story section {
+    margin: 50px 0px;
+}
 #story p {
     line-height: 1.5em;
     margin: 10px;
@@ -271,7 +274,7 @@ form p {
 /******************** BROWSE AND ALTERNATIVES SECTION ********************/
 
 #browse, 
-#alternatives {
+#alternatives>div {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -298,10 +301,13 @@ form p {
     border-radius: 20px;
     box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.43);
 }
-#browse img, 
+#browse article img, 
 #alternatives img {
     width: 100%;
     height: auto;
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 #browse article p,
 #alternatives article p {
@@ -330,12 +336,17 @@ form p {
     border: none;
 }
 
+#alternatives {
+    background-color: rgb(213, 240, 170);
+    margin:0px;
+}
+
 /******************** SINGLE ITEM PAGE ********************/
 
 
 #singleitem {
     display: block;
-    padding: 10px;
+    padding: 0px;
 }
 
 #singleitem input {
@@ -348,17 +359,24 @@ form p {
     /* height: 100%; */
     height: 100%;
 }
+
 #singleitem h2 {
     color: rgb(68, 44, 44);
     margin-bottom: 20px;
 }
 
-#item {
-    margin: 40px 0px;
+#singleitem>article:first-of-type a {
+    display: block;
 }
 
-#alternatives {
+#item {
+    margin: 0px;
+}
+
+#alternatives>div, #info {
     justify-content: left;
+    padding: 20px;
+    margin: 0px;
 }
 
 #singleitem h3 {
@@ -372,7 +390,7 @@ form p {
 
 
 @media only screen and (min-width: 600px) {
-    main {
+    #browse, #grocery {
         display: flex;
         /* justify-content: space-around; */
         /* justify-content: flex-start; */
@@ -411,6 +429,10 @@ form p {
         /* margin-bottom: 30px; */
     }
 
+    #story {
+        padding: 40px;
+    }
+
     #story section {
         display: flex;
         align-items: center;
@@ -419,6 +441,7 @@ form p {
     #story section img {
         flex: 1;
         max-width: 300px;
+        margin-right: 40px;
     }
     #story div{
         flex: 4;
@@ -430,12 +453,8 @@ form p {
         flex: 45%;
         max-width: 45%;
     }
-    #browse article:nth-child(2n),
-    #alternatives article:nth-child(2n) {
-        /* margin-right: 20px; */
-    }
 
-    #singleitem {
+    #item, #alternatives, #singleitem>article:first-of-type {
         padding: 0px 40px;
     }
 
@@ -451,6 +470,23 @@ form p {
 
 
 @media only screen and (min-width: 900px) {
+
+    .mainheader {
+        padding: 40px 0px;
+    }
+
+    header h1 {
+        font-size: 44px;
+    }
+    header p {
+        font-size: 24px;
+        line-height: 2em;
+    }
+
+    nav ul li a {
+        font-size: 24px;
+    }
+
     #browse article,
     #alternatives article {
         /* flex: 1; */
@@ -458,32 +494,35 @@ form p {
         max-width: 30%;
         margin-right: 0px;
     }
-    #browse article:nth-child(3n),
-    #alternatives article:nth-child(3n) {
-        /* margin-right: 20px; */
+
+    #singleitem input {
+        width: 70%;
     }
 
-    #singleitem  input {
-        width: 70%;
+    footer {
+        font-size: 22px;
     }
 }
 
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1200px) {
     
     .mainheader>div {
         justify-content: right;
     }
 
     #browse,
-    #alternatives,
-    main, 
+    main aside > div,
+    #alternatives>div,
+    #grocery, 
+    #item,
+    #singleitem>article:first-of-type,
     .mainheader h1, 
     .sideheader div,
     nav ul, 
     .mainheader>div,
     footer div {
-        max-width: 1024px;
+        max-width: 1200px;
         margin: auto;
     }
     nav ul {
@@ -515,6 +554,19 @@ form p {
 }
 
 .collapsable {
-    /* border: blue solid 1px; */
-    transition: all 1s;
+    /* transition: all 1s; */
+    transition: max-height 1s linear;
+    /* opacity: 100; */
+    height: auto;
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.collapsed {
+    /* transition: all 1s; */
+    max-height: 0px;
+    padding: 0px;
+    
+    /* opacity: 0; */
+    /* overflow: hidden; */
 }

@@ -31,94 +31,101 @@
         </ul>
     </nav>
 
-    <main id="browse">
+    <main>
 
         <aside id="story">
 
             <div>
-                <h2>Learn the story of your produce:</h2>
-                <a href="">[x]</a>
+
+                <div>
+                    <h2>Learn the story of your produce:</h2>
+                    <a id="closeinfo">[x]</a>
+                </div>
+                
+                <section id="section1">
+
+                    <img src="images/growing.png" alt="carrot growing">
+
+                    <div>
+                        <p>First, the carrot must be grown.</p>
+                        <p>This has a cost in labor, water, and CO2 from machines used in the growing process.</p>
+                        <p>Some foods have higher cost than others. For example, almonds take 8047 m^3/ton water to grow, while carrots take 195 m^3/ton.</p>
+                    </div>
+
+                </section>
+
+                <section id="section2">
+
+                    <img src="images/transport.png" alt="truck">
+
+                    <div>
+                        <p>Then, the carrots are transported from the farm to the store.</p>
+                        <p>If carrots are locally out of season, this increases the distance traveled by the carrot, since it must be transported from an area which has them in season. </p>
+                        <p>If the carrot is put in storage, there are costs of maintaining it in good condition, such as cooling. </p>
+                    </div>
+                </section>
+
+                <section id="section3">
+
+                    <img src="images/carrot.png" alt="carrot">
+
+                    <div>
+                        <p>By the time it gets to you,  your produce can already have a considerable environmental footprint, which you can’t tell just by looking at it. </p>
+                        <p>Per serving, carrots take 0.07 lbs CO2</p>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <img src="images/earth.png" alt="earth">
+
+                    <div>
+                        <p>By using this site to find out more about the seasonality of your produce and its effect on the environment, you can reduce your footprint and help make a happier, healthier Earth!</p>
+                    </div>
+
+                </section>
+
             </div>
-            
-            <section id="section1">
-
-                <img src="images/growing.png" alt="carrot growing">
-
-                <div>
-                    <p>First, the carrot must be grown.</p>
-                    <p>This has a cost in labor, water, and CO2 from machines used in the growing process.</p>
-                    <p>Some foods have higher cost than others. For example, almonds take 8047 m^3/ton water to grow, while carrots take 195 m^3/ton.</p>
-                </div>
-
-            </section>
-
-            <section id="section2">
-
-                <img src="images/transport.png" alt="truck">
-
-                <div>
-                    <p>Then, the carrots are transported from the farm to the store.</p>
-                    <p>If carrots are locally out of season, this increases the distance traveled by the carrot, since it must be transported from an area which has them in season. </p>
-                    <p>If the carrot is put in storage, there are costs of maintaining it in good condition, such as cooling. </p>
-                </div>
-            </section>
-
-            <section id="section3">
-
-                <img src="images/carrot.png" alt="carrot">
-
-                <div>
-                    <p>By the time it gets to you,  your produce can already have a considerable environmental footprint, which you can’t tell just by looking at it. </p>
-                    <p>Per serving, carrots take 0.07 lbs CO2</p>
-                </div>
-
-            </section>
-
-            <section>
-
-                <img src="images/earth.png" alt="earth">
-
-                <div>
-                    <p>By using this site to find out more about the seasonality of your produce and its effect on the environment, you can reduce your footprint and help make a happier, healthier Earth!</p>
-                </div>
-
-            </section>
 
         </aside>
 
-        <section>
-            <p>browse items here:</p>
-            <select class="location">
-                <option value="na">select one</option>
-                <option value="CA">California</option>
-            </select>
-            <input type="text" id="mainsearch" placeholder="search for produce items">
-        </section>
+        <div id="browse">
+            <section>
+                <p>browse items here:</p>
+                <select class="location">
+                    <option value="na">select one</option>
+                    <option value="CA">California</option>
+                </select>
+                <input type="text" id="mainsearch" placeholder="search for produce items">
+            </section>
 
-        <article>
-            <img src="images/apple.png" alt="apple">
-            <p class="itemname">apple<button>+</button></p>
-        </article>
+            <article class="itemname">
+                <img src="images/apple.png" class="itemname" alt="apple">
+                <p class="itemname">apple<button class="itemname">+</button></p>
+            </article>
 
-        <article>
-            <img src="images/apple.png" alt="apple">
-            <p class="itemname">apple<button>+</button></p>
-        </article>
+            <article class="itemname">
+                <img src="images/apple.png" class="itemname" alt="apple">
+                <p class="itemname">apple<button class="itemname">+</button></p>
+            </article>
 
-        <article>
-            <img src="images/apple.png" alt="apple">
-            <p class="itemname">apple<button>+</button></p>
-        </article>
+            <article class="itemname">
+                <img src="images/apple.png" class="itemname" alt="apple">
+                <p class="itemname">apple<button class="itemname">+</button></p>
+            </article>
 
-        <article>
-            <img src="images/apple.png" alt="apple">
-            <p class="itemname">apple<button>+</button></p>
-        </article>
+            <article class="itemname">
+                <img src="images/apple.png" class="itemname" alt="apple">
+                <p class="itemname">apple<button class="itemname">+</button></p>
+            </article>
 
-        <article>
-            <img src="images/apple.png" alt="apple">
-            <p class="itemname">apple<button>+</button></p>
-        </article>
+            <article class="itemname">
+                <img src="images/apple.png" class="itemname" alt="apple">
+                <p class="itemname">apple<button class="itemname">+</button></p>
+            </article>
+
+        </div>
 
     </main>
 
@@ -132,8 +139,8 @@
 
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script> -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-database.js"></script>
 
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
@@ -144,7 +151,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
 
     <!-- my script -->
-    <!-- <script src="script.js"></script> -->
+    <script src="script-index.js"></script>
     
 </body>
 </html>
