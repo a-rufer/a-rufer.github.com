@@ -280,6 +280,10 @@ form p {
     justify-content: space-between;
 }
 
+#browse h2 {
+    margin: 20px 0px;
+}
+
 #browse section, 
 #alternatives section {
     flex: 100%;
@@ -553,20 +557,20 @@ form p {
     display: none;
 }
 
-.collapsable {
+#story .collapsable {
     /* transition: all 1s; */
-    transition: max-height 1s linear;
+   
     /* opacity: 100; */
-    height: auto;
-    max-height: 1000px;
+/*     height: auto;
+    max-height: 1000px; */
     overflow: hidden;
 }
 
-.collapsed {
+#story .collapsed {
     /* transition: all 1s; */
+    transition: max-height 3s linear;
     max-height: 0px;
-    padding: 0px;
-    
+    padding: 0px;    
     /* opacity: 0; */
     /* overflow: hidden; */
 }

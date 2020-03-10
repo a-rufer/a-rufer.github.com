@@ -29,14 +29,18 @@
     /************* functions **************/
 
     // close the story information
-    xBtn.addEventListener('click', function(){
+   /*  xBtn.addEventListener('click', function(){
         story.className = "collapsable";
         story.className += " collapsed";
         setTimeout(function(){
             story.className += " hidden";
         }, 1000);
         
-    });
+    }); */
+
+    $("#closeinfo").click(function(){
+        $("#story").slideUp(750);
+    })
 
 
     // fill the browse elements
@@ -53,6 +57,42 @@
             browse.append(newItem);
         });
     }
+    displayItems();
+
+
+    function showOneItem(itemName) {
+
+        console.log(itemName);
+        var dbRef = db.ref('items').orderByChild('name');
+
+        let found = false;
+
+        dbRef.on("child_added", function(snap) { 
+            // check if any of the foods in items match the item to add
+            if (snap.val().name == itemName) {
+
+                found = true;
+
+                const item = snap.val();
+                const id = snap.key;
+    
+                const newItem = document.createElement("article");
+                newItem.setAttribute("class", id);
+                newItem.innerHTML = `<img src="images/${item.name}.png" class="${id}" alt="${item.name}">
+                <p class="${id}">${item.name}<button class="${id}">+</button></p>`;
+                browse.append(newItem);
+                
+            }
+        });
+
+        if (!found) {
+            const newItem = document.createElement("article");
+            newItem.innerHTML = `<p>item not found</p>`;
+                browse.append(newItem);
+        }
+    }
+
+    showOneItem("apple");
 
 
 
