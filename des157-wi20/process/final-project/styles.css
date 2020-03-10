@@ -259,18 +259,9 @@ form p {
     margin-bottom: 20px;
 }
 #story {
-    /* display: flex; */
-    /* align-items: center; */
     margin: 10px;
 }
 
-#story section img {
-    /* flex: 1; */
-    /* width: 100px; */
-}
-#story div{
-    /* flex: 4; */
-}
 
 #story p {
     line-height: 1.5em;
@@ -441,7 +432,7 @@ form p {
     }
     #browse article:nth-child(2n),
     #alternatives article:nth-child(2n) {
-        margin-right: 20px;
+        /* margin-right: 20px; */
     }
 
     #singleitem {
@@ -469,7 +460,7 @@ form p {
     }
     #browse article:nth-child(3n),
     #alternatives article:nth-child(3n) {
-        margin-right: 20px;
+        /* margin-right: 20px; */
     }
 
     #singleitem  input {
@@ -502,12 +493,9 @@ form p {
     #alternatives article {
         /* flex: 1; */
         flex: 20%;
-        max-width: 25%;
+        max-width: 22%;
         margin-right: 0px;
-    }
-    #browse article:nth-child(4n),
-    #alternatives article:nth-child(4n) {
-        margin-right: 20px;
+        margin-bottom: 35px;
     }
 
     main #glist {
