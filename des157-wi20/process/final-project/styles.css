@@ -3,10 +3,6 @@
     padding: 0px;
 }
 
-main {
-    border: solid black 2px;
-}
-
 /* typography */
 body {
     font-size: 20px;
@@ -14,11 +10,16 @@ body {
     color: rgb(68, 44, 44);
 }
 
-h1, h2 {
-    color: white;
+h1, h2, h3 {
     font-family: 'Lato';
     font-weight: 400;
 }
+
+header h1,
+#glist h2, #compare h2 {
+    color: white;
+}
+
 
 /* footer styling  */
 
@@ -59,6 +60,7 @@ header {
 .mainheader>div {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 header #logo {
     margin-right: 20px;
@@ -115,6 +117,7 @@ main article,
 #glist, #compare {
     border: solid 3px #0D6719;
     border-radius: 20px;
+    margin-top: 30px;
 }
 
 main #glist h2, 
@@ -123,19 +126,20 @@ main #compare h2 {
     background-color: #0D6719;
     padding: 15px;
 }
-main #glist form {
-    padding-top: 0px;
-    color: rgb(178, 238, 144);
-}
 main #glist h2, 
 main #compare h2 {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+main #glist form {
+    padding-top: 0px;
+    color: rgb(178, 238, 144);
+}
 
 main #glist ol li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px 15px;
     border-bottom: solid lightgray 1px;
 }
@@ -147,7 +151,6 @@ main #compare {
 }
 main #compare h2 {
     flex: 100%;
-    margin-bottom: 20px;
 }
 main #compare select {
     flex: 1;
@@ -157,19 +160,16 @@ main #compare section {
     flex: 100%;
     display: flex;
     flex-wrap: wrap;
-    /* border: red solid 1px; */
 }
 main #compare #seasonality {
-    /* background-color: blue; */
     display: initial;
 }
 
 main #compare section h3 {
     flex: 100%;
-    align-self: center;
+    /* align-self: center; */
 }
 main #compare canvas {
-    /* border: solid black 1px; */
     flex: 1;
 }
 
@@ -180,12 +180,13 @@ button,
 input, 
 select {
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px;
     padding: 5px 10px;
 }
 
 select {
     border: solid 2px #74BA3B;
+    margin-top: 10px;
 }
 
 select:first-of-type, input[type='button']{
@@ -250,7 +251,33 @@ form p {
 }
 
 
-/******************** HOME PAGE ********************/
+/******************** STORY SECTION ********************/
+
+#story > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+#story {
+    /* display: flex; */
+    /* align-items: center; */
+    margin: 10px;
+}
+
+#story section img {
+    /* flex: 1; */
+    /* width: 100px; */
+}
+#story div{
+    /* flex: 4; */
+}
+
+#story p {
+    line-height: 1.5em;
+    margin: 10px;
+}
+
+/******************** BROWSE AND ALTERNATIVES SECTION ********************/
 
 #browse, 
 #alternatives {
@@ -269,6 +296,7 @@ form p {
 #browse section input {
     width: 300px;
     border: solid 2px #74BA3B;
+    margin-top: 10px;
 }
 
 #browse article, 
@@ -313,13 +341,20 @@ form p {
 
 /******************** SINGLE ITEM PAGE ********************/
 
+
 #singleitem {
-    display: initial;
+    display: block;
     padding: 10px;
 }
 
-#singleitem>img {
-    width: 100%;
+#singleitem input {
+    width: 200px;
+    margin: 10px;
+}
+
+#item img {
+    /* width: 100%; */
+    /* height: 100%; */
     height: 100%;
 }
 #singleitem h2 {
@@ -327,11 +362,19 @@ form p {
     margin-bottom: 20px;
 }
 
+#item {
+    margin: 40px 0px;
+}
+
 #alternatives {
     justify-content: left;
 }
 
+#singleitem h3 {
+    color: rgb(68, 44, 44);
+}
 #alternatives h3 {
+    font-size: 30px;
     margin: 40px 0px;
     flex: 100%;
 }
@@ -345,12 +388,12 @@ form p {
         padding: 0px 40px;
         margin: 0px;
     }
-    main #glist {
+    #glist {
         margin-right: 40px;
-        flex: 2;
+        /* flex: 1; */
         /* width: 40% */
     }
-    main #compare {
+    #compare {
         margin-right: 0px;
         flex: 4;
         /* width: 60%; */
@@ -377,6 +420,19 @@ form p {
         /* margin-bottom: 30px; */
     }
 
+    #story section {
+        display: flex;
+        align-items: center;
+    }
+    
+    #story section img {
+        flex: 1;
+        max-width: 300px;
+    }
+    #story div{
+        flex: 4;
+    }
+
     #browse article,
     #alternatives article {
         /* flex: 1; */
@@ -390,8 +446,12 @@ form p {
 
     #singleitem {
         padding: 0px 40px;
-        border: solid black 2px;
     }
+
+    #singleitem input {
+        width: 55%;
+    }
+
     #singleitem #item {
         display: flex;
     }
@@ -410,6 +470,10 @@ form p {
     #browse article:nth-child(3n),
     #alternatives article:nth-child(3n) {
         margin-right: 20px;
+    }
+
+    #singleitem  input {
+        width: 70%;
     }
 }
 
@@ -445,6 +509,14 @@ form p {
     #alternatives article:nth-child(4n) {
         margin-right: 20px;
     }
+
+    main #glist {
+        flex: 1;
+    }
+    main #compare {
+        flex: 5;
+    }
+
 }
 
 
