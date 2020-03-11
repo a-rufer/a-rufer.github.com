@@ -24,6 +24,7 @@
     const addBtns = document.querySelectorAll("#browse article p button");
     const story = document.getElementById("story");
     const browse = document.getElementById("browse");
+    const search = document.getElementById("mainsearch");
 
 
     /************* functions **************/
@@ -53,16 +54,21 @@
             const newItem = document.createElement("article");
             newItem.setAttribute("class", id);
             newItem.innerHTML = `<img src="images/${item.name}.png" class="${id}" alt="${item.name}">
-            <p class="${id}">${item.name}<button class="${id}">+</button></p>`;
+            <p class="${id}">${item.name}<button class="addBtn ${id}">+</button></p>`;
             browse.append(newItem);
         });
     }
     displayItems();
 
 
+    // display one item only (instead of all items in browse section)
     function showOneItem(itemName) {
 
-        console.log(itemName);
+        // clear everything but the search stuff
+        const dontDeleteThis = browse.children[0];
+        browse.innerHTML = "";
+        browse.append(dontDeleteThis);
+
         var dbRef = db.ref('items').orderByChild('name');
 
         let found = false;
@@ -86,13 +92,53 @@
         });
 
         if (!found) {
-            const newItem = document.createElement("article");
-            newItem.innerHTML = `<p>item not found</p>`;
+            const newItem = document.createElement("p");
+            newItem.innerHTML = `item not found`;
                 browse.append(newItem);
         }
     }
 
-    showOneItem("apple");
+    // search function
+    document.addEventListener('submit', function(event){
+        event.preventDefault();
+        if (search.value != "") {
+            name = search.value.toLowerCase();
+            showOneItem(name);
+        }
+        else {
+            // clear items
+            const dontDeleteThis = browse.children[0];
+            browse.innerHTML = "";
+            browse.append(dontDeleteThis);
+            
+            displayItems();
+        }
+        search.value = "";
+    });
+
+    
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains(".addBtn")) {
+            console.log("hello");
+        }
+        console.log("hello");
+        const itemID = event.target.classList[1];
+        console.log(itemID);
+        const dbRef = db.ref('items/' + itemID);
+        const newItem = {}; // make new item with the values of the item in the stock list of items
+        dbRef.once("value", snap => {
+            newItem["name"] = snap.val().name;
+            newItem["seasonality"] = snap.val().seasonality;
+            newItem["water"] = snap.val().water;
+            newItem["nutrition"] = snap.val().nutrition;
+        });
+        db.ref('glist').push(newItem);
+    });
+
+
+    console.log("hello");
+    
+
 
 
 
