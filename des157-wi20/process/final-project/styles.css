@@ -566,10 +566,8 @@ form p {
 
     #browse article,
     #alternatives article {
-        /* flex: 1; */
         flex: 30%;
         max-width: 30%;
-        margin-right: 0px;
     }
 
     #singleitem input {
@@ -623,7 +621,6 @@ form p {
         /* flex: 1; */
         flex: 20%;
         max-width: 22%;
-        margin-right: 0px;
         margin-bottom: 35px;
     }
 

@@ -61,11 +61,13 @@
             db.ref('items').orderByChild('name').on('child_added', snap => {
                 if (altArray[i] == snap.val().name) {
                     // make new alternative item
+                    const item = snap.val();
+                    const id = snap.key;
                     const newAltItem = document.createElement("article");
                     newAltItem.setAttribute("class", snap.key);
                     newAltItem.innerHTML = `
-                        <img src="images/${snap.val().name}.svg" class="${snap.key}" alt="${snap.val().name}">
-                        <p class="${snap.key}">${snap.val().name}<button class="${snap.key}">+</button></p>
+                    <img src="images/${item.name}.svg" class="${id}" alt="${item.name}">
+                    <p class="${id}">${item.name}<button class="addBtn ${id}">+</button></p>
                     `;
                     document.querySelector("#alternatives div").append(newAltItem);
                     console.log(newAltItem);
@@ -224,22 +226,45 @@
 
         // add button
         if (event.target.classList[0] == "addBtn") {
-            const newItem = {}; // make new item with the values of the item in the stock list of items
-            dbRef.once("value", snap => {
-                const item = snap.val();
-                newItem["name"] = item.name;
-                newItem["seasonality"] = item.seasonality;
-                newItem["water"] = item.water;
-                newItem["nutrition"] = item.nutrition;
-            });
-
-            // timer bc of JS asynchronicity making it add undefined things
-            setTimeout(function(){
-                db.ref('glist').push(newItem);
-                alert(`${newItem.name} has been added to your grocery list`);
-                // console.log(newItem.name);
-                // console.log("hello3");
-            }, 90);
+            // main add button
+            if (event.target.matches(".itemname .addBtn")) {
+                const newItem = {}; // make new item with the values of the item in the stock list of items
+                dbRef.once("value", snap => {
+                    const item = snap.val();
+                    newItem["name"] = item.name;
+                    newItem["seasonality"] = item.seasonality;
+                    newItem["water"] = item.water;
+                    newItem["nutrition"] = item.nutrition;
+                });
+    
+                // timer bc of JS asynchronicity making it add undefined things
+                setTimeout(function(){
+                    db.ref('glist').push(newItem);
+                    alert(`${newItem.name} has been added to your grocery list`);
+                    // console.log(newItem.name);
+                    // console.log("hello3");
+                }, 90);
+            }
+            // alternative add button
+            else {
+                const newItem = {}; // make new item with the values of the item in the stock list of items
+                db.ref('items/' + event.target.classList[1]).once("value", snap => {
+                    const item = snap.val();
+                    newItem["name"] = item.name;
+                    newItem["seasonality"] = item.seasonality;
+                    newItem["water"] = item.water;
+                    newItem["nutrition"] = item.nutrition;
+                });
+    
+                // timer bc of JS asynchronicity making it add undefined things
+                setTimeout(function(){
+                    db.ref('glist').push(newItem);
+                    alert(`${newItem.name} has been added to your grocery list`);
+                    // console.log(newItem.name);
+                    // console.log("hello3");
+                }, 90);
+            }
+            
             
         }
         // clicking on alternatives
