@@ -8,6 +8,7 @@ body {
     font-size: 20px;
     font-family: 'Karla', Arial, sans-serif;
     color: rgb(68, 44, 44);
+    background-color: rgb(247, 247, 247);
 }
 
 h1, h2, h3 {
@@ -26,9 +27,11 @@ header h1,
 footer {
     padding: 50px;
     margin-top: 50px;
-    background-color: #0D6719;
+    background-color: rgb(17, 87, 27);
     color: white;
     font-size: 18px;
+    box-shadow: 0px -3px 13px -2px rgba(0,0,0,0.75);
+
 }
 footer a {
     color: rgb(178, 238, 144);
@@ -43,21 +46,20 @@ footer p {
 }
 
 
-/* setting up structure of page and elements */
+/******************** HEADER AND NAV SET UP ********************/
 
 /* header */
 header {
     padding: 20px 10px;
-    background-color: #0D6719;
+    background-color: rgb(17, 87, 27);
     border-bottom: 10px #74BA3B solid;
 }
-.sideheader>div {
+.sideheader>div,
+.mainheader>div {
     display: flex;
     align-items: center;
 }
-.mainheader>div {
-    display: flex;
-}
+
 header #logo {
     margin-right: 20px;
     width: 70px;
@@ -78,27 +80,25 @@ header h1 {
 
 nav {
     background-color: rgba(13, 103, 25, 0.842);
+    box-shadow: 0px 3px 13px -2px rgba(0,0,0,0.75);
 }
 nav ul {
     list-style-type: none;
     display: flex;
-    /* background-color: rgba(13, 103, 25, 0.842); */
     padding: 15px 10px;
     margin-bottom: 20px;
 }
 
 nav ul li a {
-    padding: 15px 10px;
-    padding-right: 10px;
+    padding: 10px 10px;
     text-decoration: none;
-    color: rgb(236, 255, 219);
-    /* border-radius: 20px; */
-    margin-right: 20px;
+    color: white;
+    margin-right: 30px;
     text-transform: uppercase;
 }
 nav ul li a:hover {
-    background-color: lightseagreen;
     background-color: #0D6719;
+    border-radius: 50px;
 }
 
 /******************** GROCERY LIST ********************/
@@ -111,11 +111,11 @@ main article,
     margin-bottom: 20px;
 }
 #grocery article {
-    background-color: #0D6719;
+    background-color: rgb(17, 87, 27);
 }
 
 #glist, #compare {
-    border: solid 3px #0D6719;
+    border: solid 2px #0D6719;
     border-radius: 20px;
     margin-top: 30px;
 }
@@ -123,7 +123,6 @@ main article,
 main #glist h2, 
 main #glist form, 
 main #compare h2 {
-    background-color: #0D6719;
     padding: 15px;
 }
 main #glist h2, 
@@ -138,7 +137,7 @@ main #glist form {
 
 main #glist ol,
 main #compare section,
-canvas,
+#grocery canvas,
 main #compare div {
     background-color: white;
     
@@ -208,15 +207,20 @@ select {
     border-radius: 5px;
     font-size: 20px;
     padding: 5px 10px;
+    border: none;
+}
+input[type=button] {
+    background-color: #74BA3B;
 }
 
-.deleteBtn {
+.deleteBtn,
+input[type=button] {
     color: white;
 }
 
 select {
     border: solid 2px #74BA3B;
-    margin-top: 10px;
+    margin: 10px 0px;
 }
 
 select:first-of-type, input[type='button']{
@@ -233,7 +237,7 @@ input[type=text] {
 }
 
 .deleteBtn {
-    background-color: rgb(224, 224, 224);
+    background-color: rgb(197, 197, 197);
     border: none;
 }
 
@@ -249,8 +253,6 @@ form p {
 #seasonality>div {
     flex: 1;
     display: flex;
-    /* align-items: center; */
-    /* flex-wrap: wrap; */
     justify-content: space-around;
     margin-top: 10px;
 }
@@ -279,7 +281,6 @@ form p {
 
 #compare #water canvas {
     padding-top: 20px;
-
 }
 
 
@@ -291,13 +292,21 @@ form p {
     margin-bottom: 20px;
 }
 #story {
-    background-color: rgb(213, 240, 170);
+    background-color: rgb(220, 238, 157);
     padding: 20px;
 }
 
 #story section {
     margin-bottom: 50px;
-    align-items: center;
+    align-items: flex-start;
+}
+
+#story img {
+    margin-bottom: 20px;
+}
+
+#story section:first-of-type {
+    height: auto;
 }
 
 #story h2 {
@@ -342,7 +351,6 @@ form p {
 #alternatives article {
     flex: 100%;
     margin-bottom: 40px;
-    /* border: black solid 2px; */
     border-radius: 20px;
     box-shadow: 1px 2px 5px -1px rgba(0,0,0,0.75);
 }
@@ -373,20 +381,38 @@ form p {
 }
 #browse button,
 #alternatives button {
-    background-color: #74BA3B;
+    /* background-color: #74BA3B; */
     border: none;
     color: white;
     /* font-weight: bolder; */
     /* font-size: 30px; */
 }
-#browse button:hover,
-#alternatives button:hover {
+#browse .addBtn img:hover,
+#alternatives .addBtn img:hover {
     background-color: rgb(149, 219, 92);
+    border: solid 2px black inside;
 }
 
 #alternatives {
     background-color: rgb(213, 240, 170);
     margin:0px;
+}
+
+#browse .addBtn ,
+#alternatives .addBtn,
+#info .addBtn  {
+    padding: 0px;
+    border-radius: 100%;
+    font-size: 0px;
+    background-color: none;
+}
+#browse .addBtn img,
+#alternatives .addBtn img,
+#info .addBtn img {
+    padding: 0px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
 }
 
 /******************** SINGLE ITEM PAGE ********************/
@@ -467,23 +493,11 @@ form p {
 
 
 @media only screen and (min-width: 600px) {
-    #browse, #grocery {
+    #browse {
         display: flex;
-        /* justify-content: space-around; */
-        /* justify-content: flex-start; */
         align-items: flex-start;
         padding: 0px 40px;
         margin: 0px;
-    }
-    #glist {
-        margin-right: 40px;
-        /* flex: 1; */
-        /* width: 40% */
-    }
-    #compare {
-        margin-right: 0px;
-        flex: 4;
-        /* width: 60%; */
     }
 
     #seasonality div p {
@@ -507,7 +521,6 @@ form p {
     
     nav ul {
         padding: 15px 40px;
-        /* margin-bottom: 30px; */
     }
 
     #story {
@@ -530,7 +543,6 @@ form p {
 
     #browse article,
     #alternatives article {
-        /* flex: 1; */
         flex: 45%;
         max-width: 45%;
     }
@@ -557,11 +569,24 @@ form p {
 
     header p {
         font-size: 24px;
-        /* line-height: 2em; */
     }
 
     nav ul li a {
         font-size: 24px;
+    }
+
+    #grocery {
+        display: flex;
+        align-items: flex-start;
+        padding: 0px 40px;
+        margin: 0px;
+    }
+    #glist {
+        margin-right: 40px;
+    }
+    #compare {
+        margin-right: 0px;
+        flex: 4;
     }
 
     #browse article,
@@ -589,6 +614,21 @@ form p {
         margin-right: 5px;
         padding: 7px;
         line-height: 24px;
+    }
+
+    #story section {
+        margin-bottom: 50px;
+        align-items: flex-start;
+        height: 150vh;
+    }
+    #story #section3 {
+        height: 100vh;
+    }
+    #story #section4 {
+        height: 75vh;
+    }
+    #story img {
+        margin: 0px;
     }
 }
 
@@ -671,4 +711,42 @@ form p {
 .rotate {
     transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
+}
+
+#story article {
+    position: relative;
+}
+.slideable {
+    position: relative;
+    transition: all 1s;
+}
+.slideout {
+    position: relative;
+    left: 1000px;
+    transition: all 1s;
+}
+.slidein {
+    position: relative;
+    transition: all 1s;
+    left: 0px;
+}
+
+#story section img {
+    position: sticky;
+    bottom: 10vh;
+    align-self: flex-end;
+}
+
+#story section {
+    justify-content: flex-start;
+    /* border: solid black 2px; */
+}
+#story article {
+    overflow: hidden;
+    height: 80%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-self: flex-start;
 }

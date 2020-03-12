@@ -49,7 +49,7 @@
 
         // item info
         const item = snap.val();
-        itemName.innerHTML = `${item.name}<button class="addBtn ${itemID}">+</button>`;
+        itemName.innerHTML = `${item.name}<button class="addBtn ${itemID}"><img src="images/add.svg" alt="add button"></button>`;
         itemImg.alt = item.name;
         itemImg.src = `images/${item.name}.svg`;
 
@@ -67,7 +67,7 @@
                     newAltItem.setAttribute("class", snap.key);
                     newAltItem.innerHTML = `
                     <img src="images/${item.name}.svg" class="${id}" alt="${item.name}">
-                    <p class="${id}">${item.name}<button class="addBtn ${id}">+</button></p>
+                    <p class="${id}">${item.name}<button class="addBtn ${id}"><img src="images/add.svg" alt="add button"></button></p>
                     `;
                     document.querySelector("#alternatives div").append(newAltItem);
                     console.log(newAltItem);
@@ -225,9 +225,9 @@
     document.addEventListener('click', function(event) {
 
         // add button
-        if (event.target.classList[0] == "addBtn") {
+        if (event.target.matches(".addBtn img")) {
             // main add button
-            if (event.target.matches(".itemname .addBtn")) {
+            if (event.target.matches(".itemname .addBtn img")) {
                 const newItem = {}; // make new item with the values of the item in the stock list of items
                 dbRef.once("value", snap => {
                     const item = snap.val();
@@ -248,7 +248,7 @@
             // alternative add button
             else {
                 const newItem = {}; // make new item with the values of the item in the stock list of items
-                db.ref('items/' + event.target.classList[1]).once("value", snap => {
+                db.ref('items/' + event.target.parentElement.classList[1]).once("value", snap => {
                     const item = snap.val();
                     newItem["name"] = item.name;
                     newItem["seasonality"] = item.seasonality;
