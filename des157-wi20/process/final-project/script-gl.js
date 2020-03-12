@@ -150,6 +150,7 @@
                 newItem["seasonality"] = snap.val().seasonality;
                 newItem["water"] = snap.val().water;
                 newItem["nutrition"] = snap.val().nutrition;
+                newItem["alternatives"] = snap.val().alternatives;
 
                 db.ref('glist').push(newItem); // push the new item to the database
             }
@@ -200,8 +201,26 @@
                 console.log(itemID);
                 // go to the item page, passing the item id in the url
                 window.location.href = `item-page.html?item=${itemID}`;
-            }, 100);
-            
+            }, 100); 
+        }
+
+        // toggle arrow
+        else if (event.target.matches(".arrowBtn")){
+
+            if (event.target.matches(".open")) {
+                event.target.style.transform = "rotate(-90deg)";
+                // event.target.src = "images/closed.svg";
+                event.target.setAttribute("class", "arrowBtn closed");
+                event.target.parentElement.nextElementSibling.setAttribute("class", "collapsable hidden");
+                
+            }
+            else if (event.target.matches(".closed")) {
+                event.target.style.transform = "rotate(0deg)";
+                // event.target.src = "images/open.svg";
+                event.target.setAttribute("class", "arrowBtn open");
+                event.target.parentElement.nextElementSibling.setAttribute("class", "collapsable");
+            }
+
         }
     });
 

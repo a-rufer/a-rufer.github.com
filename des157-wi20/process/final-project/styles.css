@@ -47,20 +47,16 @@ footer p {
 
 /* header */
 header {
-    padding: 10px;
+    padding: 20px 10px;
     background-color: #0D6719;
     border-bottom: 10px #74BA3B solid;
-    /* display: flex;
-    align-items: center; */
 }
-.sideheader>section {
+.sideheader>div {
     display: flex;
     align-items: center;
 }
 .mainheader>div {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
 }
 header #logo {
     margin-right: 20px;
@@ -77,6 +73,7 @@ header h1 {
 }
 .mainheader h1 {
     margin-bottom: 5px;
+    margin-top: 0px;
 }
 
 nav {
@@ -113,6 +110,9 @@ main article,
     margin: 0px 10px;
     margin-bottom: 20px;
 }
+#grocery article {
+    background-color: #0D6719;
+}
 
 #glist, #compare {
     border: solid 3px #0D6719;
@@ -134,6 +134,19 @@ main #compare h2 {
 main #glist form {
     padding-top: 0px;
     color: rgb(178, 238, 144);
+}
+
+main #glist ol,
+main #compare section,
+canvas,
+main #compare div {
+    background-color: white;
+    
+}
+main #glist ol,
+main #compare section:last-of-type {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 main #glist ol li {
@@ -167,8 +180,15 @@ main #compare section {
     display: flex;
     flex-wrap: wrap;
 }
+main #compare section p {
+    margin: 10px 0px;
+}
 main #compare #seasonality {
     display: initial;
+}
+
+#s1, #s2 {
+    padding: 10px 0px;
 }
 
 main #compare section h3 {
@@ -238,6 +258,7 @@ form p {
     flex: 1;
     font-size: 12px;
 }
+
 .dot {
     border-radius: 50%;
     color: white;
@@ -256,8 +277,9 @@ form p {
     background-color: rgb(192, 191, 191);
 }
 
-#compare #water h3 {
-    margin-bottom: 10px;
+#compare #water canvas {
+    padding-top: 20px;
+
 }
 
 
@@ -322,11 +344,11 @@ form p {
     margin-bottom: 40px;
     /* border: black solid 2px; */
     border-radius: 20px;
-    box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.43);
+    box-shadow: 1px 2px 5px -1px rgba(0,0,0,0.75);
 }
 #browse article:hover, 
 #alternatives article:hover {
-    box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.6);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.9);
 }
 #browse article img, 
 #alternatives img {
@@ -354,13 +376,12 @@ form p {
     background-color: #74BA3B;
     border: none;
     color: white;
-    font-weight: bolder;
-    font-size: 30px;
+    /* font-weight: bolder; */
+    /* font-size: 30px; */
 }
 #browse button:hover,
 #alternatives button:hover {
     background-color: rgb(149, 219, 92);
-    border: none;
 }
 
 #alternatives {
@@ -386,21 +407,29 @@ form p {
     height: 300px;
 }
 
+#item .itemname {
+    display: flex;
+    align-items: center;
+}
+
 #singleitem h2 {
     color: rgb(68, 44, 44);
     margin-bottom: 20px;
+    font-size: 40px;
 }
 
 #info button {
     margin-left: 10px;
+    background: #74BA3B;
+    color: white;
+    border: none;
+}
+#info button:hover {
+    background: rgb(149, 219, 92);
 }
 
 #singleitem>article:first-of-type a {
     display: block;
-}
-
-#item {
-    margin: 0px;
 }
 
 #alternatives>div, #info {
@@ -414,8 +443,8 @@ form p {
     /* margin: 20px 0px; */
     padding: 20px 0px;
 }
-#info img,
-#compare img {
+#info .arrowBtn,
+#compare .arrowBtn {
     margin-right: 20px;
     max-height: 20px;
     max-width: 20px;
@@ -425,6 +454,15 @@ form p {
     font-size: 30px;
     margin: 40px 0px;
     flex: 100%;
+}
+
+#s,
+#seasonality div {
+    display: flex;
+    flex-wrap: wrap;
+}
+#s .dot {
+    margin-bottom: 5px;
 }
 
 
@@ -453,11 +491,14 @@ form p {
     }
 
     header {
-        padding: 20px 40px;
+        padding: 40px 40px;
+    }
+    header h1 {
+        font-size: 44px;
     }
 
-    header h1 {
-        font-size: 36px;
+    .mainheader h1 {
+        margin-bottom: 10px;
     }
     
     header #logo {
@@ -514,9 +555,6 @@ form p {
         padding: 40px 40px;
     }
 
-    header h1 {
-        font-size: 44px;
-    }
     header p {
         font-size: 24px;
         /* line-height: 2em; */
@@ -536,6 +574,10 @@ form p {
 
     #singleitem input {
         width: 70%;
+    }
+
+    #item {
+        margin: 40px 0px;
     }
 
     footer {
@@ -622,4 +664,14 @@ form p {
     padding: 0px;    
     /* opacity: 0; */
     /* overflow: hidden; */
+}
+
+.rotatable {
+    overflow: hidden;
+    transition-duration: 0.5s;
+    transition-property: transform;
+}
+.rotate {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
 }

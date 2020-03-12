@@ -15,10 +15,10 @@
 
 
     <header class="sideheader">
-        <section>
+        <div>
             <img id="logo" src="images/logo.svg" alt="logo">
             <h1>Grocery Guide</h1>
-        </section>
+        </div>
     </header>
 
     <nav>
@@ -32,11 +32,13 @@
         
         <article>
             <!-- <a href="index.html">back</a> -->
-            <select class="location">
-                <option value="na">select one</option>
-                <option value="CA">California</option>
-            </select>
-            <input type="text" id="mainsearch" placeholder="search for produce items">
+            <form>
+                <select class="location">
+                    <option value="na">select one</option>
+                    <option value="CA">California</option>
+                </select>
+                <input type="text" id="mainsearch" placeholder="search for produce items">
+            </form>
         </article>
 
         <article id="item">
@@ -48,21 +50,21 @@
                 <h2 class="itemname"></h2>
 
                 <section id="seasonality">
-                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" >in season: <span id="inseason"></span></h3>
+                    <h3><img class="arrowBtn open rotatable" src="images/open.svg" alt="icon" >in season: <span id="inseason"></span></h3>
                     <article class="collapsable ">
                         <div id="s"></div>
                     </article>
                 </section>
 
                 <section id="water">
-                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px">water footprint</h3>
+                    <h3><img class="arrowBtn open rotatable" src="images/open.svg" alt="icon">water footprint</h3>
                     <article class="collapsable ">
                         <canvas id="w"></canvas>
                     </article>
                 </section>
 
                 <section id="nutrition">
-                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px">nutrition</h3>
+                    <h3><img class="arrowBtn open rotatable" src="images/open.svg" alt="icon">nutrition</h3>
                     <article class="collapsable ">
                         <canvas id="n"></canvas>
                     </article>
@@ -76,7 +78,7 @@
             <div>
                 <h3>alternatives</h3>
 
-                <article>
+                <!-- <article>
                     <img src="images/apple.svg" class="2" alt="apple">
                     <p class="2">apple<button class="2">+</button></p>
                 </article>
@@ -84,7 +86,7 @@
                 <article>
                     <img src="images/apple.svg" class="2" alt="apple">
                     <p class="2">apple<button class="2">+</button></p>
-                </article>
+                </article> -->
 
             </div>
         </article>

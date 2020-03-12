@@ -19,7 +19,9 @@
 
     var db = firebase.database();
 
-    let arrowBtns = document.querySelectorAll(".arrowBtn");
+    var search = document.getElementById("mainsearch");
+
+    // let arrowBtns = document.querySelectorAll(".arrowBtn");
 
 
     /************* initializing page to display correct info **************/
@@ -37,9 +39,9 @@
     let alternativesNames = document.querySelectorAll("#alternatives .itemname"); // alternatives names
     let alternativesImgs = document.querySelectorAll("#alternatives img"); // alternatives images
 
-    const seasonalitySection = document.getElementById("seasonality");
-    const waterSection = document.getElementById("water");
-    const nutritionSection = document.getElementById("nutrition");
+    // const seasonalitySection = document.getElementById("seasonality");
+    // const waterSection = document.getElementById("water");
+    // const nutritionSection = document.getElementById("nutrition");
 
 
     // set up item info 
@@ -52,9 +54,31 @@
         itemImg.src = `images/${item.name}.svg`;
 
         // alternatives info
+        const altArray = item.alternatives;
+        altArray.length
+        for (let i = 0; i < altArray.length; i++) {
+            // look through database for correct item to get info
+            db.ref('items').orderByChild('name').on('child_added', snap => {
+                if (altArray[i] == snap.val().name) {
+                    // make new alternative item
+                    const newAltItem = document.createElement("article");
+                    newAltItem.setAttribute("class", snap.key);
+                    newAltItem.innerHTML = `
+                        <img src="images/${snap.val().name}.svg" class="${snap.key}" alt="${snap.val().name}">
+                        <p class="${snap.key}">${snap.val().name}<button class="${snap.key}">+</button></p>
+                    `;
+                    document.querySelector("#alternatives div").append(newAltItem);
+                    console.log(newAltItem);
+
+                }
+            });
+}
+
+        
 
     });
 
+    
 
     function displayData(itemID) {
         dbRef.once("value", snap => {
@@ -213,8 +237,8 @@
             setTimeout(function(){
                 db.ref('glist').push(newItem);
                 alert(`${newItem.name} has been added to your grocery list`);
-                console.log(newItem.name);
-                console.log("hello3");
+                // console.log(newItem.name);
+                // console.log("hello3");
             }, 90);
             
         }
@@ -240,8 +264,53 @@
             }
 
         }
-
         
+    });
+
+    // search function
+    document.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        // check if something was searched for
+        if (search.value != "") {
+            let name2 = search.value.toLowerCase();
+            let found = false;
+            let newItemID;
+            // look for item in database
+            db.ref('items').orderByChild('name').on("child_added", function(snap) { 
+                if (snap.val().name == name2) {
+                    newItemID = snap.key;
+                    found = true;
+                }
+            })
+            
+            // timeout because of JS asynchronicity
+            setTimeout(function(){
+                // check if the searched string is an item
+                if (found) {
+                    window.location.href = `item-page.html?item=${newItemID}`;
+                }
+                // otherwise display error message
+                else {
+                    const singleitem = document.getElementById("singleitem");
+                    // const dontDeleteThis = singleitem.children[0];
+                    singleitem.children[1].innerHTML = "";
+                    // singleitem.append(dontDeleteThis);
+                    const errMsg = document.createElement("h2");
+                    errMsg.innerHTML = "item not found";
+                    errMsg.style.margin = "20px";
+                    singleitem.children[1].append(errMsg);
+                }
+                
+            }, 90);
+            
+        }
+        // if nothing was searched for
+        else {
+            // reload page
+            window.location.href = `item-page.html?item=${itemID}`;
+        }
+        search.value = "";
     });
 
     

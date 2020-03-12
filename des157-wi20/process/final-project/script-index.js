@@ -130,6 +130,7 @@
                 newItem["seasonality"] = snap.val().seasonality;
                 newItem["water"] = snap.val().water;
                 newItem["nutrition"] = snap.val().nutrition;
+                newItem["alternatives"] = snap.val().alternatives;
             });
             db.ref('glist').push(newItem);
             alert(`${newItem.name} has been added to your grocery list`);
