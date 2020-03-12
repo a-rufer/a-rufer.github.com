@@ -536,7 +536,7 @@ form p {
     
     #story section img {
         flex: 1;
-        max-width: 100vh;
+        max-width: 100vw;
         margin-right: 40px;
     }
     #story article{
