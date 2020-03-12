@@ -143,6 +143,9 @@ main #glist ol li {
     padding: 5px 15px;
     border-bottom: solid lightgray 1px;
 }
+main #glist ol li:last-of-type {
+    border: none;
+}
 
 /* comparison box */
 main #compare {
@@ -307,6 +310,10 @@ form p {
     border-radius: 20px;
     box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.43);
 }
+#browse article:hover, 
+#alternatives article:hover {
+    box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.6);
+}
 #browse article img, 
 #alternatives img {
     width: 100%;
@@ -400,6 +407,7 @@ form p {
         display: flex;
         /* justify-content: space-around; */
         /* justify-content: flex-start; */
+        align-items: flex-start;
         padding: 0px 40px;
         margin: 0px;
     }

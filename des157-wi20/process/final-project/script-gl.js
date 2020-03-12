@@ -158,8 +158,8 @@
     
     // listens for search submission
     document.addEventListener("submit", function(event){
-        event.preventDefault();        
-        addItem(searchBar.value);
+        event.preventDefault();  
+        addItem(searchBar.value.toLowerCase());
         searchBar.value = "";
     });
     
@@ -174,6 +174,10 @@
         if (event.target.matches('.deleteBtn') ) {
             const itemID = event.target.getAttribute("id").slice(2);
             removeItem(itemID);
+        }
+        if (event.target.matches("#go")) {
+            addItem(searchBar.value.toLowerCase());
+            searchBar.value = "";
         }
     });
 

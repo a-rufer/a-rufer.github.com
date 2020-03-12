@@ -116,28 +116,34 @@
         search.value = "";
     });
 
-    
+    // click button functionality
     document.addEventListener('click', function(event) {
-        if (event.target.classList.contains(".addBtn")) {
-            console.log("hello");
+
+        console.log(event);
+        // add button
+        if (event.target.classList[0] == "addBtn") {
+            const itemID = event.target.classList[1];
+            const dbRef = db.ref('items/' + itemID);
+            const newItem = {}; // make new item with the values of the item in the stock list of items
+            dbRef.once("value", snap => {
+                newItem["name"] = snap.val().name;
+                newItem["seasonality"] = snap.val().seasonality;
+                newItem["water"] = snap.val().water;
+                newItem["nutrition"] = snap.val().nutrition;
+            });
+            db.ref('glist').push(newItem);
+            alert(`${newItem.name} has been added to your grocery list`);
         }
-        console.log("hello");
-        const itemID = event.target.classList[1];
-        console.log(itemID);
-        const dbRef = db.ref('items/' + itemID);
-        const newItem = {}; // make new item with the values of the item in the stock list of items
-        dbRef.once("value", snap => {
-            newItem["name"] = snap.val().name;
-            newItem["seasonality"] = snap.val().seasonality;
-            newItem["water"] = snap.val().water;
-            newItem["nutrition"] = snap.val().nutrition;
-        });
-        db.ref('glist').push(newItem);
+        else if (event.target.matches("#browse article") ||
+                event.target.matches("#browse article img") || 
+                event.target.matches("#browse article p") ) {
+            // go to the item page, passing the item id in the url
+            window.location.href = `item-page.html?item=${event.target.className}`;
+        }
+        
     });
 
 
-    console.log("hello");
-    
 
 
 
