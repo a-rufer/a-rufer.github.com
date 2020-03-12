@@ -138,7 +138,7 @@
     // add item itemName to list, checking if it is a valid item
     function addItem(itemName) {
 
-        console.log(itemName);
+        // console.log(itemName);
         var dbRef = db.ref('items').orderByChild('name');
 
         dbRef.on("child_added", function(snap) { 
@@ -170,14 +170,38 @@
     }
     
     // listens for a delete button being clicked, and deletes using the id of the button clicked (matches the id of the item in glist)
+    // listens for go button
+    // listens for click on list item
     document.addEventListener("click", function(event) {
         if (event.target.matches('.deleteBtn') ) {
             const itemID = event.target.getAttribute("id").slice(2);
             removeItem(itemID);
         }
-        if (event.target.matches("#go")) {
+        else if (event.target.matches("#go")) {
             addItem(searchBar.value.toLowerCase());
             searchBar.value = "";
+        }
+        else if (event.target.matches("li")) {
+
+            // get item id in items
+            const itemName = event.target.innerHTML.split("<")[0];
+            
+            var dbRef = db.ref('items').orderByChild('name');
+
+            let itemID;
+            dbRef.on("child_added", function(snap) { 
+                if (snap.val().name == itemName) {
+                    itemID = snap.key;
+                }
+            })
+
+            // timeout to prevent issues with asynchronicity
+            setTimeout(function(){
+                console.log(itemID);
+                // go to the item page, passing the item id in the url
+                window.location.href = `item-page.html?item=${itemID}`;
+            }, 100);
+            
         }
     });
 

@@ -15,10 +15,10 @@
 
 
     <header class="sideheader">
-        <div>
-            <img id="logo" src="images/logo.png" alt="logo">
+        <section>
+            <img id="logo" src="images/logo.svg" alt="logo">
             <h1>Grocery Guide</h1>
-        </div>
+        </section>
     </header>
 
     <nav>
@@ -53,19 +53,25 @@
             </section>
             
             <section id="seasonality">
-                <h3>seasonality</h3>
-                <div id="s1"></div>
-                <div id="s2"></div>
+                <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px" >in season: <span id="inseason"></span></h3>
+                <article class="collapsable ">
+                    <div id="s1"></div>
+                    <div id="s2"></div>
+                </article>
             </section>
 
             <section id="water">
-                <h3>water footprint</h3>
-                <canvas id="w" class="hidden"></canvas>
+                <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px" >water footprint</h3>
+                <article class="collapsable ">
+                    <canvas id="w" ></canvas>
+                </article>
             </section>
 
             <section id="nutrition">
-                <h3>nutrition</h3>
-                <canvas id="n"></canvas>
+                <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px" >nutrition</h3>
+                <article class="collapsable ">
+                    <canvas id="n"></canvas>
+                </article>
             </section>
 
         </article>

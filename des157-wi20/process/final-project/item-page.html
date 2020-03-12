@@ -15,10 +15,10 @@
 
 
     <header class="sideheader">
-        <div>
-            <img id="logo" src="images/logo.png" alt="logo">
+        <section>
+            <img id="logo" src="images/logo.svg" alt="logo">
             <h1>Grocery Guide</h1>
-        </div>
+        </section>
     </header>
 
     <nav>
@@ -31,7 +31,7 @@
     <main id="singleitem">
         
         <article>
-            <a href="index.html">back</a>
+            <!-- <a href="index.html">back</a> -->
             <select class="location">
                 <option value="na">select one</option>
                 <option value="CA">California</option>
@@ -41,37 +41,34 @@
 
         <article id="item">
 
-            <img class="itemimg" src="images/apple.png" alt="apple">
+            <img class="itemimg" src="" alt="" width="400" height="400">
             
-            <div id="info">
+            <article id="info">
 
-                <h2 class="itemname">apple</h2>
+                <h2 class="itemname"></h2>
 
                 <section id="seasonality">
-                    <h3><i class="closed">+</i> in season: <span id="inseason">???</span></h3>
-                    <div class="collapsable hidden">
-                        <div id="s1"></div>
-                        <div id="s2"></div>
-                    </div>
+                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" >in season: <span id="inseason"></span></h3>
+                    <article class="collapsable ">
+                        <div id="s"></div>
+                    </article>
                 </section>
 
                 <section id="water">
-                    <h3><i class="closed">+</i> water footprint</h3>
-                    <div class="collapsable hidden">
-                        <canvas id="w" class="hidden"></canvas>
-                    </div>
-                    
+                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px">water footprint</h3>
+                    <article class="collapsable ">
+                        <canvas id="w"></canvas>
+                    </article>
                 </section>
 
                 <section id="nutrition">
-                    <h3><i class="closed">+</i> nutrition</h3>
-                    <div class="collapsable hidden">
+                    <h3><img class="arrowBtn open" src="images/open.svg" alt="icon" height="10px">nutrition</h3>
+                    <article class="collapsable ">
                         <canvas id="n"></canvas>
-                    </div>
-                    
+                    </article>
                 </section>
 
-            </div>
+            </article>
 
         </article>
 
@@ -80,14 +77,15 @@
                 <h3>alternatives</h3>
 
                 <article>
-                    <img src="images/apple.png" alt="apple">
-                    <p class="itemname">apple<button>+</button></p>
+                    <img src="images/apple.svg" class="2" alt="apple">
+                    <p class="2">apple<button class="2">+</button></p>
                 </article>
-        
+
                 <article>
-                    <img src="images/apple.png" alt="apple">
-                    <p class="itemname">apple<button>+</button></p>
+                    <img src="images/apple.svg" class="2" alt="apple">
+                    <p class="2">apple<button class="2">+</button></p>
                 </article>
+
             </div>
         </article>
 
@@ -110,7 +108,7 @@
 
 
     <!-- Chart.js -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <!-- my script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

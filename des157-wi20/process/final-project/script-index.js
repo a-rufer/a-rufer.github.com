@@ -53,7 +53,7 @@
 
             const newItem = document.createElement("article");
             newItem.setAttribute("class", id);
-            newItem.innerHTML = `<img src="images/${item.name}.png" class="${id}" alt="${item.name}">
+            newItem.innerHTML = `<img src="images/${item.name}.svg" class="${id}" alt="${item.name}">
             <p class="${id}">${item.name}<button class="addBtn ${id}">+</button></p>`;
             browse.append(newItem);
         });
@@ -84,7 +84,7 @@
     
                 const newItem = document.createElement("article");
                 newItem.setAttribute("class", id);
-                newItem.innerHTML = `<img src="images/${item.name}.png" class="${id}" alt="${item.name}">
+                newItem.innerHTML = `<img src="images/${item.name}.svg" class="${id}" alt="${item.name}">
                 <p class="${id}">${item.name}<button class="${id}">+</button></p>`;
                 browse.append(newItem);
                 
