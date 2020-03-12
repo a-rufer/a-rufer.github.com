@@ -70,7 +70,7 @@
                     <p class="${id}">${item.name}<button class="addBtn ${id}"><img src="images/add.svg" alt="add button"></button></p>
                     `;
                     document.querySelector("#alternatives div").append(newAltItem);
-                    console.log(newAltItem);
+                    // console.log(newAltItem);
 
                 }
             });
@@ -240,9 +240,7 @@
                 // timer bc of JS asynchronicity making it add undefined things
                 setTimeout(function(){
                     db.ref('glist').push(newItem);
-                    alert(`${newItem.name} has been added to your grocery list`);
-                    // console.log(newItem.name);
-                    // console.log("hello3");
+                    addItemPopUp(newItem.name);
                 }, 90);
             }
             // alternative add button
@@ -259,9 +257,7 @@
                 // timer bc of JS asynchronicity making it add undefined things
                 setTimeout(function(){
                     db.ref('glist').push(newItem);
-                    alert(`${newItem.name} has been added to your grocery list`);
-                    // console.log(newItem.name);
-                    // console.log("hello3");
+                    addItemPopUp(newItem.name);
                 }, 90);
             }
             
@@ -338,6 +334,28 @@
         search.value = "";
     });
 
+
+    // makes a popup to notify user that the item has been added
+    function addItemPopUp(itemName) {
+
+        // create the popup element
+        const popup = document.createElement("aside");
+        popup.setAttribute("id", "popup");
+        popup.innerHTML = `<p>${itemName} has been added to your shopping list</p>`
+        popup.setAttribute("class", "popup");
+
+        // append to body
+        document.querySelector("body").append(popup);
+
+        // fade out, then remove
+        setTimeout(function(){
+            popup.style.opacity = "0";
+        }, 1000);
+        setTimeout(function(){
+            document.querySelector("body").removeChild(popup);
+        }, 2000);
+
+    }
     
 
 

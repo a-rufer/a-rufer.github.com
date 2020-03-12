@@ -29,18 +29,8 @@
 
     /************* functions **************/
 
-    // close the story information
-   /*  xBtn.addEventListener('click', function(){
-        story.className = "collapsable";
-        story.className += " collapsed";
-        setTimeout(function(){
-            story.className += " hidden";
-        }, 1000);
-        
-    }); */
-
     $("#closeinfo").click(function(){
-        $("#story").slideUp(750);
+        $("#story").slideUp(500);
     })
 
 
@@ -119,7 +109,6 @@
     // click button functionality
     document.addEventListener('click', function(event) {
 
-        console.log(event);
         // add button
         if (event.target.matches(".addBtn img")) {
             const itemID = event.target.parentElement.classList[1];
@@ -133,7 +122,7 @@
                 newItem["alternatives"] = snap.val().alternatives;
             });
             db.ref('glist').push(newItem);
-            alert(`${newItem.name} has been added to your grocery list`);
+            addItemPopUp(newItem.name);
         }
         else if (event.target.matches("#browse article") ||
                 event.target.matches("#browse article img") || 
@@ -148,7 +137,6 @@
     // scroll animations for information
 
     let offset = window.pageYOffset;
-    console.log(offset);
     let sectionTops = [];
     let sectionBottoms = [];
     // initialize tops and bottoms
@@ -156,64 +144,31 @@
         sectionTops[i-1] = story.children[i].getBoundingClientRect().top + offset;
         sectionBottoms[i-1] = story.children[i].getBoundingClientRect().bottom + offset;
     }
-    // console.log(sectionTops);
-    // console.log(sectionBottoms);
 
     window.addEventListener('scroll', function() {
 
         let pageBottom = window.pageYOffset + this.window.innerHeight; // current pos
-        // this.console.log(pageBottom);
 
         if (pageBottom > sectionTops[0] && pageBottom < sectionBottoms[0]) {
-            // this.console.log(0);
-
-            let sectionHeight = sectionBottoms[0] - sectionTops[0];
-            const sectionPs = story.children[0+1].children[1].children;
-            let pHeight = sectionHeight / sectionPs.length;
-
-            for (let i = 0; i < sectionPs.length; i++) {
-                
-                if (pageBottom > (sectionTops[0] + pHeight*i) 
-                    && pageBottom > (sectionBottoms[0] - pHeight*(sectionPs.length - i) )) {
-                    sectionPs[i].setAttribute("class", "slideable slidein");
-                    this.console.log(sectionPs[i]);
-                }
-            }
-            
+            slidePs(0, pageBottom);
         }
         else if (pageBottom > sectionTops[1] && pageBottom < sectionBottoms[1]) {
-            this.console.log(1);
-            let sectionHeight = sectionBottoms[1] - sectionTops[1];
-            const sectionPs = story.children[0+2].children[1].children;
-            let pHeight = sectionHeight / sectionPs.length;
-
-            for (let i = 0; i < sectionPs.length; i++) {
-                if (pageBottom > (sectionTops[1] + pHeight*i) 
-                    /* && pageTop > (sectionBottoms[0] - pHeight*(sectionPs.length - i) )*/) {
-                    sectionPs[i].setAttribute("class", "slideable slidein");
-                    this.console.log(sectionPs[i]);
-                }
-            }
+            slidePs(1, pageBottom);
         }
         else if (pageBottom > sectionTops[2] && pageBottom < sectionBottoms[2]) {
-            this.console.log(2);
-            // let sectionHeight = sectionBottoms[2] - sectionTops[2];
             slidePs(2, pageBottom);
             
         }
         else if (pageBottom > sectionTops[3] && pageBottom < sectionBottoms[3]) {
-            this.console.log(3);
-            // let sectionHeight = sectionBottoms[3] - sectionTops[3];
             slidePs(3, pageBottom);
         }
         else if (pageBottom > sectionTops[4] && pageBottom < sectionBottoms[4]) {
-            this.console.log(4);
-            // let sectionHeight = sectionBottoms[4] - sectionTops[4];
             slidePs(4, pageBottom);
         }
 
     });
 
+    // slides the p in the section onto the screen at the correct scroll location
     function slidePs(sectionNum, pageBottom) {
 
         let sectionHeight = sectionBottoms[sectionNum] - sectionTops[sectionNum];
@@ -228,6 +183,32 @@
             }
         }
     }
+
+
+
+    // makes a popup to notify user that the item has been added
+
+    function addItemPopUp(itemName) {
+
+        // create the popup element
+        const popup = document.createElement("aside");
+        popup.setAttribute("id", "popup");
+        popup.innerHTML = `<p>${itemName} has been added to your shopping list</p>`
+        popup.setAttribute("class", "popup");
+
+        // append to body
+        document.querySelector("body").append(popup);
+
+        // fade out, then remove
+        setTimeout(function(){
+            popup.style.opacity = "0";
+        }, 1000);
+        setTimeout(function(){
+            document.querySelector("body").removeChild(popup);
+        }, 2000);
+
+    }
+
 
 
 

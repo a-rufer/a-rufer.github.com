@@ -9,6 +9,7 @@ body {
     font-family: 'Karla', Arial, sans-serif;
     color: rgb(68, 44, 44);
     background-color: rgb(247, 247, 247);
+    position: relative;
 }
 
 h1, h2, h3 {
@@ -307,6 +308,7 @@ form p {
 
 #story section:first-of-type {
     height: auto;
+    padding-bottom: 30px;
 }
 
 #story h2 {
@@ -534,7 +536,7 @@ form p {
     
     #story section img {
         flex: 1;
-        max-width: 300px;
+        max-width: 100vh;
         margin-right: 40px;
     }
     #story article{
@@ -713,6 +715,10 @@ form p {
     -webkit-transform: rotate(180deg);
 }
 
+
+/****** story interactivity ******/
+
+
 #story article {
     position: relative;
 }
@@ -722,14 +728,15 @@ form p {
 }
 .slideout {
     position: relative;
-    left: 1000px;
+    top: 900px;
     transition: all 1s;
 }
 .slidein {
     position: relative;
     transition: all 1s;
-    left: 0px;
+    top: 0px;
 }
+
 
 #story section img {
     position: sticky;
@@ -749,4 +756,20 @@ form p {
     justify-content: space-evenly;
     align-items: flex-start;
     align-self: flex-start;
+}
+
+
+/*****  popup stuff *****/
+
+.popup {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgb(213, 240, 170);
+    border-radius: 5px;
+    border: solid 2px white;
+    opacity: 100;
+    transition: all 2s;
 }
