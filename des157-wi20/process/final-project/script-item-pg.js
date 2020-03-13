@@ -341,7 +341,7 @@
         // create the popup element
         const popup = document.createElement("aside");
         popup.setAttribute("id", "popup");
-        popup.innerHTML = `<p>${itemName} has been added to your shopping list</p>`
+        popup.innerHTML = `<p>${itemName} has been added to your grocery list</p>`
         popup.setAttribute("class", "popup");
 
         // append to body

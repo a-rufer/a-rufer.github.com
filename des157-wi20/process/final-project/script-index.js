@@ -75,7 +75,7 @@
                 const newItem = document.createElement("article");
                 newItem.setAttribute("class", id);
                 newItem.innerHTML = `<img src="images/${item.name}.svg" class="${id}" alt="${item.name}">
-                <p class="${id}">${item.name}<button class="${id}">+</button></p>`;
+                <p class="${id}">${item.name}<button class="addBtn ${id}"><img src="images/add.svg" alt="add button"></button></p>`;
                 browse.append(newItem);
                 
             }
@@ -193,7 +193,7 @@
         // create the popup element
         const popup = document.createElement("aside");
         popup.setAttribute("id", "popup");
-        popup.innerHTML = `<p>${itemName} has been added to your shopping list</p>`
+        popup.innerHTML = `<p>${itemName} has been added to your grocery list</p>`
         popup.setAttribute("class", "popup");
 
         // append to body
