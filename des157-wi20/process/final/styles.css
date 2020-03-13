@@ -3,7 +3,7 @@
     padding: 0px;
 }
 
-/* typography */
+/************ general typography **************/
 body {
     font-size: 20px;
     font-family: 'Karla', Arial, sans-serif;
@@ -23,15 +23,14 @@ header h1,
 }
 
 
-/* footer styling  */
+/************* footer styling  **************/
 
 footer {
     padding: 50px;
     margin-top: 50px;
     background-color: rgb(17, 87, 27);
     color: white;
-    font-size: 18px;
-    
+    font-size: 16px;
     box-shadow: 0px -3px 13px -2px rgba(0,0,0,0.75);
 
 }
@@ -45,12 +44,12 @@ footer a:hover {
 }
 footer p {
     line-height: 1.8em;
+    font-family: 'Lato';
 }
 
 
 /******************** HEADER AND NAV SET UP ********************/
 
-/* header */
 header {
     padding: 20px 10px;
     background-color: rgb(17, 87, 27);
@@ -70,14 +69,15 @@ header #logo {
 header h1 {
     font-size: 30px;
 }
+
+.mainheader h1 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
 .mainheader p {
     color: white;
     font-family: 'Lato';
     font-weight: 300;
-}
-.mainheader h1 {
-    margin-bottom: 5px;
-    margin-top: 0px;
 }
 
 nav {
@@ -104,8 +104,6 @@ nav ul li a:hover {
 }
 
 /******************** GROCERY LIST ********************/
-
-/* main content */
 
 main article,
 #alternatives article {
@@ -159,9 +157,6 @@ main #glist ol li {
 }
 main #glist ol li:last-of-type {
     border: none;
-}
-main #glist ol li p:hover {
-    text-decoration: underline;
 }
 
 /* comparison box */
@@ -230,8 +225,6 @@ select:first-of-type, input[type='button']{
 }
 
 input[type=text] {
-    border: none;
-    /* margin: 10px 0px; */
     border: solid 2px #74BA3B;
     margin-right: 20px;
     color: green;
@@ -294,7 +287,7 @@ form p {
     margin-bottom: 20px;
 }
 #story {
-    background-color: rgb(220, 238, 157);
+    background-color: rgb(216, 250, 177); 
     padding: 20px;
 }
 
@@ -317,9 +310,11 @@ form p {
 }
 
 #story p {
-    line-height: 1.5em;
+    font-size: 18px;
+    line-height: 1.8em;
     margin: 10px;
     max-width: 600px;
+    font-family: 'Lato';
 }
 
 /******************** BROWSE AND ALTERNATIVES SECTION ********************/
@@ -384,11 +379,8 @@ form p {
 }
 #browse button,
 #alternatives button {
-    /* background-color: #74BA3B; */
     border: none;
     color: white;
-    /* font-weight: bolder; */
-    /* font-size: 30px; */
 }
 #browse .addBtn img:hover,
 #alternatives .addBtn img:hover {
@@ -631,6 +623,10 @@ form p {
     }
     #story img {
         margin: 0px;
+    }
+    
+    #story p {
+        font-size: 20px;
     }
 }
 

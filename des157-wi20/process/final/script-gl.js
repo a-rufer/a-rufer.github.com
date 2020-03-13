@@ -63,6 +63,7 @@
             }
         }
     });
+
     let currNutritionChart = new Chart( document.getElementById("n"), {
         type: 'horizontalBar',
         data: {
@@ -242,7 +243,6 @@
         else {
             clearCompareData(1);
         }
-        // console.log(event.target.value);
     });
     items2.addEventListener("change", function(event){
         event.preventDefault();
@@ -253,7 +253,6 @@
             clearCompareData(2);
         }
         
-        // console.log(event.target.value);
     });
 
     // display the data for the specified item in the specified container
@@ -424,19 +423,6 @@
         }
         currNutritionChart.update();
     }
-
-
-
-
-
-
-    // HOMEPAGE
-
-
-    // ITEM PAGE
-
-
-
 
 
 

@@ -21,9 +21,6 @@
 
     var search = document.getElementById("mainsearch");
 
-    // let arrowBtns = document.querySelectorAll(".arrowBtn");
-
-
     /************* initializing page to display correct info **************/
 
     // get item id from url
@@ -36,13 +33,6 @@
 
     let itemImg = document.querySelector("#item .itemimg");
     let itemName= document.querySelector("#item .itemname"); // selected item
-    let alternativesNames = document.querySelectorAll("#alternatives .itemname"); // alternatives names
-    let alternativesImgs = document.querySelectorAll("#alternatives img"); // alternatives images
-
-    // const seasonalitySection = document.getElementById("seasonality");
-    // const waterSection = document.getElementById("water");
-    // const nutritionSection = document.getElementById("nutrition");
-
 
     // set up item info 
     dbRef.once('value', snap => {
@@ -74,9 +64,8 @@
 
                 }
             });
-}
+        }
 
-        
 
     });
 
@@ -85,7 +74,6 @@
     function displayData(itemID) {
         dbRef.once("value", snap => {
             const item = snap.val();
-            // console.log(item);
             // display info
             displaySeasonality(item);
             displayWater(item);
@@ -97,7 +85,6 @@
 
 
     function displaySeasonality(item) {
-        // console.log(item);
         const seasonalityInfo = item.seasonality;
         const container = document.getElementById("s");
 
@@ -353,13 +340,9 @@
         }, 1000);
         setTimeout(function(){
             document.querySelector("body").removeChild(popup);
-        }, 2000);
+        }, 3000);
 
     }
-    
-
-
-
 
 
 }())

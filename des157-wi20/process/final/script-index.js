@@ -20,8 +20,6 @@
 
     var db = firebase.database();
 
-    const xBtn = document.getElementById("closeinfo");
-    // const addBtns = document.querySelectorAll("#browse article p button");
     const story = document.querySelector("#story div");
     const browse = document.getElementById("browse");
     const search = document.getElementById("mainsearch");
@@ -208,13 +206,6 @@
         }, 2000);
 
     }
-
-
-
-
-
-
-
 
 
 
