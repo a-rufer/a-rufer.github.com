@@ -31,6 +31,7 @@ footer {
     background-color: rgb(17, 87, 27);
     color: white;
     font-size: 18px;
+    
     box-shadow: 0px -3px 13px -2px rgba(0,0,0,0.75);
 
 }
@@ -392,7 +393,7 @@ form p {
 #browse .addBtn img:hover,
 #alternatives .addBtn img:hover {
     background-color: rgb(149, 219, 92);
-    border: solid 2px black inside;
+    border: solid 2px white;
 }
 
 #alternatives {
@@ -406,7 +407,6 @@ form p {
     padding: 0px;
     border-radius: 100%;
     font-size: 0px;
-    background-color: none;
 }
 #browse .addBtn img,
 #alternatives .addBtn img,
@@ -770,6 +770,6 @@ form p {
     background-color: rgb(213, 240, 170);
     border-radius: 5px;
     border: solid 2px white;
-    opacity: 100;
+    opacity: 1;
     transition: all 2s;
 }
